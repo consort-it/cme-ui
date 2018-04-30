@@ -1,0 +1,34 @@
+:host {
+    padding: 2rem;
+    display: block;
+}
+
+mat-card, cme-new-connection {
+    margin-bottom: 2rem;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.table__header {
+    text-align: left;
+}
+
+.icon {
+    vertical-align: inherit;
+}
+
+.icon--success {
+    color: green;
+}
+
+.icon--error {
+    color: red;
+}
+
+.home-button-container {
+    display: flex;
+    justify-content: flex-end;
+}

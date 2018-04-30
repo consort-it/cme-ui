@@ -1,0 +1,48 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+@import './libs/shared/src/styles/globals';
+
+:host {
+  position: relative;
+  display: block;
+  height: 100%;
+  isolation: isolate;
+}
+
+.main-area-wrapper {
+  height: 100%;
+  isolation: isolate;
+}
+
+.main-area {
+  height: 100%;
+}
+
+.main-navigation {
+  width: 200px; // avoid percent based width as resize events are not (yet) supported.
+}
+
+.content {
+  display: block;
+  height: 100%;
+  overflow: hidden; // avoid scrollbars in presentation animation
+}
+
+.nav-button-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $subheader-height;
+  width: $navbutton-width;
+}
+
+.nav-button--cross {
+  color: white;
+}
+
+.nav-button--burger {
+  color: white;
+}

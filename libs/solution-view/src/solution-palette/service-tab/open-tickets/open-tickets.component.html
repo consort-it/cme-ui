@@ -1,0 +1,15 @@
+<ng-container *ngIf="(issues$ | async)?.length > 0; else noResults">
+  <div class="list-item-container" *ngFor="let issue of issues$ | async" (click)="onTicketClick(issue)">
+    <div matLine class="list-item">
+      <span class="list-item__key">{{issue.key}}</span>
+      <span class="list-item__title" title="{{issue.title}}">{{issue.title}}</span>
+      <span class="list-item__status">{{issue.status}}</span>
+    </div>
+    <div matLine>
+      <span class="list-item__date">{{issue.updated | date: 'short'}}</span>
+    </div>
+  </div>
+</ng-container>
+<ng-template #noResults>
+  <h3>{{'palette.ticket-tab.No tickets for' | translate}} {{paletteService.microserviceNameSelection$ | async}}</h3>
+</ng-template>

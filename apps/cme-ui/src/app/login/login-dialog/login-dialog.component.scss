@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.login-form {
+  display: block;
+  text-align: right;
+  padding: 1rem;
+}
+
+.login-form__form-field {
+  width: 100%;
+}
+
+.dialog-toolbar--error {
+  color: #fff;
+  font-weight: 400;
+  font-size: 0.8rem;
+  height: 45px;
+  margin-bottom: 15px;
+}
+
+.mat-icon {
+  margin-right: 0.5rem;
+}

@@ -1,0 +1,20 @@
+@import './../../../solution-view';
+
+:host {
+  display: flex;
+  pointer-events: none;
+  color: mat-color($consort-blue, 400);
+}
+
+:host.disabled {
+  color: mat-color($consort-grey, 500);
+}
+
+.tooltip-wrapper {
+  display: flex;
+  pointer-events: auto;
+}
+
+button {
+  pointer-events: auto;
+}

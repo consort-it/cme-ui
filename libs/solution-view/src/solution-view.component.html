@@ -1,0 +1,37 @@
+<cme-view-container [title]="'solution-view.Solution' | translate" [(paletteVisible)]="paletteVisible" (paletteVisibleChange)="onPaletteVisibleChange($event)">
+  <div cmeViewContainerContent class="phase-container" cmeMicroserviceDragAndDropController (droppedBefore)="microserviceDroppedBefore($event)"
+    (droppedAfter)="microserviceDroppedAfter($event)" cmePhaseDragAndDropController [phaseDragAndDropData]="phases" (phaseDragAndDropDone)="onPhaseDndDone($event)">
+
+    <div class="solution-header"></div>
+
+    <!-- Starting phase -->
+    <cme-solution-phase class="small">
+      <cme-solution-trace [traceType]="TraceType.SolutionStart"></cme-solution-trace>
+    </cme-solution-phase>
+
+    <!-- List of actual phases -->
+    <ng-container *ngIf="project">
+      <cme-solution-phase cmePhaseDragAndDrop [phase]="phase" *ngFor="let phase of phases">
+        <div class="add-service-button-wrapper">
+          <cme-add-button [tooltip]="'solution-view.add service' | translate" (click)="addNewService(phase)"></cme-add-button>
+        </div>
+
+      </cme-solution-phase>
+    </ng-container>
+
+    <!-- Ending phase -->
+    <cme-solution-phase>
+      <cme-solution-trace [traceType]="TraceType.SolutionEnd">
+        <div class="add-phase-button-wrapper">
+          <cme-add-button [tooltip]="'solution-view.add phase' | translate" (click)="addNewPhase()"></cme-add-button>
+        </div>
+      </cme-solution-trace>
+    </cme-solution-phase>
+
+  </div>
+
+  <cme-solution-bread-crumbs cmeViewContainerPaletteHeader></cme-solution-bread-crumbs>
+
+  <cme-solution-palette cmeViewContainerPalette></cme-solution-palette>
+
+</cme-view-container>

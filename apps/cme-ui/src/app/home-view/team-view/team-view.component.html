@@ -1,0 +1,60 @@
+<mat-card>
+  <mat-card-title>{{"home-view.team.Overview" | translate}}</mat-card-title>
+
+  <table>
+    <tr>
+      <td class="right">
+        {{numBackendServices}} {{"home-view.team.Microservices" | translate}}</td>
+      <td>
+
+        <mat-chip-list>
+          <mat-chip routerLink="/solution" disabled>
+            {{"home-view.team.ServiceRegistry" | translate}}
+          </mat-chip>
+        </mat-chip-list>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">
+        {{UIs.length}} {{"home-view.team.UserInterfaces" | translate}}</td>
+      <td>
+        <mat-chip-list>
+          <mat-chip *ngFor="let ui of UIs" disabled>
+            <a target="_blank" href="{{ui.url}}" title="{{ui.url}}">{{ui.name}}</a>
+          </mat-chip>
+        </mat-chip-list>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">{{"home-view.team.Developers" | translate}}</td>
+      <td>
+        <mat-chip-list>
+          <mat-chip *ngFor="let developer of developers" disabled>
+            <a href="mailto:{{developer.email}}">{{developer.name}}</a>
+          </mat-chip>
+        </mat-chip-list>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">{{"home-view.team.Ops" | translate}}</td>
+      <td>
+        <mat-chip-list>
+          <mat-chip *ngFor="let op of ops" disabled>
+            <a href="mailto:{{op.email}}">{{op.name}}</a>
+          </mat-chip>
+        </mat-chip-list>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">{{"home-view.team.ProductOwners" | translate}}</td>
+      <td>
+        <mat-chip-list>
+          <mat-chip *ngFor="let po of productOwners" disabled>
+            <a href="mailto:{{po.email}}">{{po.name}}</a>
+          </mat-chip>
+        </mat-chip-list>
+      </td>
+    </tr>
+  </table>
+
+</mat-card>

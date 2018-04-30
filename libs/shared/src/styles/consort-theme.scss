@@ -1,0 +1,145 @@
+
+$consort-blue: (
+  // consort
+  50: #CFCFFF,
+  100: #5555AD,
+  200: #4A4A9A,
+  300: #404088,
+  400: #353575,
+  500: #2B2A63,
+  600: #201F50,
+  700: #16153E,
+  800: #0B0A2B,
+  // to be definded
+  900: #D925E8,
+  A100: #D925E8,
+  A200: #D925E8,
+  A400: #D925E8,
+  A700: #D925E8,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+
+$consort-yellow: (
+  // to be definded
+  50: #D925E8,
+  100: #D925E8,
+  200: #D925E8,
+  300: #D925E8,
+  400: #D925E8,
+  // consort
+  500: #FFC400,
+  600: #F6B108,
+  700: #ED9F11,
+  800: #E48C19,
+  900: #DB7921,
+  // to be definded
+  A100: #D925E8,
+  A200: #D925E8,
+  A400: #D925E8,
+  A700: #D925E8,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$consort-red: (
+  // to be definded
+  50: #D925E8,
+  100: #D925E8,
+  200: #D925E8,
+  300: #D925E8,
+  400: #D925E8,
+  // consort
+  500: #D42933,
+  600: #C3252F,
+  700: #B1212B,
+  800: #A01D27,
+  900: #8F1924,
+  // to be definded
+  A100: #D925E8,
+  A200: #D925E8,
+  A400: #D925E8,
+  A700: #D925E8,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$consort-grey: (
+  // to be definded
+  50: #D925E8,
+  100: #D925E8,
+  // consort
+  200: #EDEFF2,
+  300: #DDE1E5,
+  400: #CED3D8,
+  500: #BEC5CB,
+  600: #AFB6BD,
+  700: #9FA8B0,
+  800: #909AA3,
+  900: #808C96,
+
+  // to be definded
+  A100: #D925E8,
+  A200: #D925E8,
+  A400: #D925E8,
+  A700: #D925E8,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);

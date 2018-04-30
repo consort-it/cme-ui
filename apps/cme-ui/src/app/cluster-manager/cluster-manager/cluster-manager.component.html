@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-title>
+    {{ 'cluster manager.Cluster Connections' | translate }}
+  </mat-card-title>
+  <mat-card-content>
+    <mat-radio-group>
+      <table class="table">
+        <thead>
+          <th class="table__header">{{ 'cluster manager.is current' | translate }}</th>
+          <th class="table__header">{{ 'cluster manager.Hostname' | translate }}</th>
+          <th class="table__header">{{ 'cluster manager.Namespace' | translate }}</th>
+          <th class="table__header">{{ 'cluster manager.Environment' | translate }}</th>
+          <th>&nbsp;</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let connection of clusterManager.availableConnections$ | async">
+            <td>
+              <mat-radio-button [checked]="connection.id === (clusterManager.currentConnection$ | async)?.id" [value]="connection" (change)="onSetCurrentConnection(connection)"></mat-radio-button>
+            </td>
+            <td>
+              {{connection.hostname}}
+            </td>
+            <td>
+              {{connection.namespace}}
+            </td>
+            <td>
+              {{connection.environment}}
+            </td>
+            <td>
+              <button (click)="onDeleteConnection(connection)" mat-raised-button>{{ 'global.Delete' | translate }}</button>
+              <mat-icon class="icon icon--success" *ngIf="(checkConnection(connection) | async)?.status === 'OK'; else errorTemplate">check_circle</mat-icon>
+              <ng-template #errorTemplate>
+                <mat-icon class="icon icon--error" [title]="(checkConnection(connection) | async)?.message">error</mat-icon>
+              </ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-radio-group>
+    <mat-card-actions align="end">
+      <button *ngIf="!showAddConnection" (click)="showAddConnection = !showAddConnection" mat-raised-button color="primary">{{ 'cluster manager.Add connection' | translate }}</button>
+      <button *ngIf="!showAddConnection" (click)="onClearAll()" mat-raised-button>{{ 'cluster manager.Clear all' | translate }}</button>
+    </mat-card-actions>
+
+  </mat-card-content>
+</mat-card>
+<cme-new-connection *ngIf="showAddConnection" (cancel)="showAddConnection = !showAddConnection" (create)="onNewConnection($event)"></cme-new-connection>
+<div class="home-button-container">
+  <button [disabled]="!(clusterManager.hasCurrentConnection$ | async)" mat-raised-button [routerLink]="['/home']" (click)="close.emit()">{{ 'cluster manager.Go to home' | translate }}</button>
+</div>

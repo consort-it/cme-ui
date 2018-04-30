@@ -1,0 +1,112 @@
+{
+  "rulesDirectory": ["node_modules/codelyzer", "node_modules/@nrwl/schematics/src/tslint"],
+  "rules": {
+    "arrow-return-shorthand": true,
+    "callable-types": true,
+    "class-name": true,
+    "forin": true,
+    "deprecation": {
+      "severity": "warn"
+    },
+    "import-blacklist": [true, "rxjs", "rxjs/Rx"],
+    "interface-over-type-literal": true,
+    "member-access": false,
+    "member-ordering": [
+      true,
+      {
+        "order": ["static-field", "instance-field", "static-method", "instance-method"]
+      }
+    ],
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-console": [true, "debug", "info", "time", "timeEnd", "trace", "log"],
+    "no-construct": true,
+    "no-debugger": true,
+    "no-duplicate-super": true,
+    "no-empty": false,
+    "no-empty-interface": true,
+    "no-eval": true,
+    "no-inferrable-types": [true, "ignore-params"],
+    "no-misused-new": true,
+    "no-non-null-assertion": false,
+    "no-shadowed-variable": true,
+    "no-string-literal": false,
+    "no-string-throw": true,
+    "no-switch-case-fall-through": true,
+    "no-unnecessary-initializer": true,
+    "no-unused-expression": true,
+    "no-use-before-declare": true,
+    "no-var-keyword": true,
+    "object-literal-sort-keys": false,
+    "prefer-const": true,
+    "radix": true,
+    "triple-equals": [true, "allow-null-check"],
+    "unified-signatures": true,
+    "variable-name": false,
+    "directive-selector": [true, "attribute", "cme", "camelCase"],
+    "component-selector": [true, "element", "cme", "kebab-case"],
+    "no-output-on-prefix": true,
+    "use-input-property-decorator": true,
+    "use-output-property-decorator": true,
+    "use-host-property-decorator": true,
+    "no-input-rename": true,
+    "no-output-rename": true,
+    "use-life-cycle-interface": true,
+    "use-pipe-transform-interface": true,
+    "component-class-suffix": true,
+    "directive-class-suffix": true,
+    "nx-enforce-module-boundaries": [
+      true,
+      {
+        "lazyLoad": ["solution-view"],
+        "allow": [],
+        "depConstraints": [
+          {
+            "sourceTag": "core-services",
+            "onlyDependOnLibsWithTags": ["core-connector", "free4all", "connector-base"]
+          },
+          {
+            "sourceTag": "core-connector",
+            "onlyDependOnLibsWithTags": ["free4all", "connector-base"]
+          },
+          {
+            "sourceTag": "view-connector",
+            "onlyDependOnLibsWithTags": ["free4all", "connector-base"]
+          },
+          {
+            "sourceTag": "cme-ui",
+            "onlyDependOnLibsWithTags": ["core-services", "shared", "free4all", "login"]
+          },
+          {
+            "sourceTag": "showcase",
+            "onlyDependOnLibsWithTags": ["view", "shared", "free4all", "core-services"]
+          },
+          {
+            "sourceTag": "view",
+            "onlyDependOnLibsWithTags": ["core-services", "view-connector", "shared", "free4all"]
+          },
+          {
+            "sourceTag": "shared",
+            "onlyDependOnLibsWithTags": ["free4all"]
+          },
+          {
+            "sourceTag": "testing",
+            "onlyDependOnLibsWithTags": []
+          },
+          {
+            "sourceTag": "i18n",
+            "onlyDependOnLibsWithTags": ["logging"]
+          },
+          {
+            "sourceTag": "connector-base",
+            "onlyDependOnLibsWithTags": ["free4all"]
+          },
+          {
+            "sourceTag": "logging",
+            "onlyDependOnLibsWithTags": []
+          }
+        ]
+      }
+    ]
+  }
+}

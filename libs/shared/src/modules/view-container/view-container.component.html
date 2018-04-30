@@ -1,0 +1,24 @@
+<div class="subheader">
+  <span class="subheader__title">{{title}}</span>
+
+  <div class="subheader__palette-header mat-elevation-z1" [ngClass]="paletteHeaderVisible ? 'subheader__palette-header--visible' :  'subheader__palette-header--hidden'">
+    <ng-content select="[cmeViewContainerPaletteHeader]"></ng-content>
+  </div>
+
+  <button mat-icon-button class="subheader__palette-button" (click)="onPaletteButtonClick()" *ngIf="isPaletteExisting && paletteButtonVisible">
+    <mat-icon>{{ paletteVisible ? 'clear' : 'build'}}</mat-icon>
+  </button>
+</div>
+
+<mat-drawer-container class="drawer-container">
+  <mat-drawer *ngIf="isPaletteExisting" mode="over" position="end" [opened]="paletteVisible" (openedChange)="onPaletteVisibleChange($event)"
+    (closedStart)="onPaletteClosing($event)" class="drawer-container__drawer">
+    <div #palette class="drawer-container__palette-wrapper">
+      <ng-content select="[cmeViewContainerPalette]"></ng-content>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content class="drawer-container__content">
+    <ng-content select="[cmeViewContainerContent]"></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

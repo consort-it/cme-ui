@@ -1,0 +1,21 @@
+<!-- mat-table is currently broken when compiling against anything > es5... -->
+<cdk-table [dataSource]="costs$">
+  <ng-container cdkColumnDef="resourceGroup">
+    <cdk-header-cell *cdkHeaderCellDef> {{'cost-view.cost-table-header.resourceGroup' | translate}} </cdk-header-cell>
+    <cdk-cell *cdkCellDef="let element"> {{element.group}} </cdk-cell>
+  </ng-container>
+
+
+  <ng-container cdkColumnDef="usd">
+    <cdk-header-cell *cdkHeaderCellDef> {{'cost-view.cost-table-header.costs-USD' | translate}} </cdk-header-cell>
+    <cdk-cell *cdkCellDef="let element"> {{element.amount | currency}} </cdk-cell>
+  </ng-container>
+
+
+  <cdk-header-row *cdkHeaderRowDef="['resourceGroup', 'usd']"></cdk-header-row>
+  <cdk-row *cdkRowDef=" let row; columns: [ 'resourceGroup', 'usd']; "></cdk-row>
+</cdk-table>
+
+<div class="no-costs-text" *ngIf="noCostsFound$ | async">{{'cost-view.no costs found' | translate}}</div>
+
+<mat-progress-bar mode="indeterminate" *ngIf="isRetrievingCosts$ | async"></mat-progress-bar>

@@ -1,0 +1,60 @@
+<div class="tab-header">
+  <cme-palette-toolbar [infotext]="'palette.service-tab.toolbar infotext' | translate">
+    <cme-palette-toolbar-button icon="add" [tooltip]="'palette.service-tab.add button tooltip' | translate" (click)="addNewService()"></cme-palette-toolbar-button>
+    <cme-palette-toolbar-button icon="edit" [tooltip]=" 'palette.service-tab.edit button tooltip' | translate:{'name': selectedServiceName } "></cme-palette-toolbar-button>
+    <cme-palette-toolbar-button icon="delete" [tooltip]=" 'palette.service-tab.delete button tooltip' | translate:{'name': selectedServiceName } "
+      (click)="deleteService()"></cme-palette-toolbar-button>
+  </cme-palette-toolbar>
+</div>
+
+<div class="tab-content">
+
+  <div *ngIf="reason$ | async as reason">{{reason}}</div>
+
+  <mat-accordion>
+
+    <!-- TODO: maybe we could add a wrapper component for the expansion panel -->
+
+    <!-- Service -->
+    <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ paletteService.phaseNameSelection$ | async }}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        Todo: add some meaningful information about this service here! ¯\_(ツ)_/¯
+      </ng-template>
+    </mat-expansion-panel>
+
+    <!-- Logs -->
+    <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{'palette.service-tab.expansion-title.Logs' | translate}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <button mat-button (click)="logViewer.refresh()">{{'palette.service-tab.Logs.Refresh logs' | translate}}</button>
+        <cme-logs #logViewer></cme-logs>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <!-- Open Tickets -->
+    <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{'palette.service-tab.expansion-title.Open Tickets' | translate}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <cme-open-tickets></cme-open-tickets>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <!-- Code-Repo -->
+    <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{'palette.service-tab.expansion-title.Code-Repo' | translate}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <cme-last-commit></cme-last-commit>
+      </ng-template>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</div>

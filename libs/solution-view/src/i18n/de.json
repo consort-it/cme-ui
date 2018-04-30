@@ -1,0 +1,70 @@
+{
+  "add-phase-dialog": {
+    "dialog title": "Phase hinzufügen",
+    "placeholder": "Name der neuen Phase",
+    "submit button text": "Hinzufügen",
+    "validation error": "Die Phase {{name}} existiert bereits."
+  },
+  "add-service-dialog": {
+    "Select service Type": "Service-Typ auswählen",
+    "dialog title": "Service hinzufügen",
+    "full url (with protocol)": "Vollständige URL (https://www.example.com)",
+    "placeholder": "Name des neuen Service",
+    "submit button text": "Hinzufügen",
+    "validation error": "Der Service {{name}} existiert bereits.",
+    "validation error url": "Bitte eine gültige URL angeben."
+  },
+  "palette": {
+    "last-commits": {
+      "Last Commits": "Letzte Commits:",
+      "timestamp-format": "dd.MM.yy HH:mm:ss"
+    },
+    "logs": {
+      "Error": "Fehler beim Laden: {{message}}.",
+      "Loading log": "Lade Logdaten...",
+      "No log entries available": "Keine Logdaten vorhanden.",
+      "timestamp-format": "dd.MM.yy HH:mm:ss.SSS z"
+    },
+    "phase-tab": {
+      "add button tooltip": "Neue Phase hinzufügen",
+      "delete button disabled tooltip": "Ausgewählte Phase ist nicht leer und kann nicht gelöscht werden",
+      "delete button tooltip": "Ausgewählte Phase löschen",
+      "toolbar infotext": "Neue Phase erzeugen oder eine bestehende ändern oder löschen"
+    },
+    "service-tab": {
+      "Logs": {
+        "Refresh logs": "Logs aktualisieren"
+      },
+      "add button tooltip": "Neuen Microservice hinzufügen",
+      "delete button tooltip": "Microservice {{name}} löschen",
+      "edit button tooltip": "Microservice {{name}} editieren",
+      "expansion-title": {
+        "Code-Repo": "Code-Repo",
+        "Logs": "Logs",
+        "Open Tickets": "Offene Tickets"
+      },
+      "toolbar infotext": "Neuen Microservice erzeugen oder einen bestehenden ändern oder löschen"
+    },
+    "tab-labels": {
+      "Open Tickets": "Offene Tickets",
+      "Phase": "Phase",
+      "Project": "Projekt",
+      "Service": "Service"
+    },
+    "ticket-tab": {
+      "No tickets for": "Keine tickets für"
+    }
+  },
+  "solution-microservice": {
+    "boebbel tooltip": "offene Jira Tickets"
+  },
+  "solution-view": {
+    "Solution": "Lösung",
+    "add phase": "Phase hinzufügen",
+    "add service": "Service hinzufügen",
+    "menu-entry": "Lösung",
+    "solution-bread-crumb-component": {
+      "selected item": "Ausgewähltes Element"
+    }
+  }
+}

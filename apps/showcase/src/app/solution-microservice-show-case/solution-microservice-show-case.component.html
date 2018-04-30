@@ -1,0 +1,10 @@
+<div class="container">
+  <cme-solution-microservice [service]="serviceModel"></cme-solution-microservice>
+</div>
+<div class="service-controls">
+  <mat-radio-group (change)="onStateChange($event)">
+    <mat-radio-button class="service-controlls__radio" [value]="kubeInfoRunning">running</mat-radio-button>
+    <mat-radio-button class="service-controlls__radio" [value]="kubeInfoBroken">broken</mat-radio-button>
+  </mat-radio-group>
+  <mat-checkbox (change)="onSelect($event)">Select</mat-checkbox>
+</div>

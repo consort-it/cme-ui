@@ -1,0 +1,11 @@
+<mat-tab-group [selectedIndex]="selectedTab" (selectedIndexChange)="onSelectedIndexChanged($event)" disableRipple="true" class="palette-tab-group">
+  <mat-tab [label]="'palette.tab-labels.Project' | translate">
+    <cme-project-tab></cme-project-tab>
+  </mat-tab>
+  <mat-tab [disabled]="!phaseSelected" [label]="'palette.tab-labels.Phase' | translate">
+    <cme-phase-tab></cme-phase-tab>
+  </mat-tab>
+  <mat-tab [disabled]="!serviceSelected" [label]="'palette.tab-labels.Service' | translate">
+    <cme-service-tab></cme-service-tab>
+  </mat-tab>
+</mat-tab-group>

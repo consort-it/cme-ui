@@ -1,0 +1,10 @@
+{
+  "cost-view": {
+    "cost-table-header": {
+      "costs-USD": "Costs (USD)",
+      "resourceGroup": "Resource Group"
+    },
+    "no costs found": "No cost data found",
+    "title": "Costs"
+  }
+}

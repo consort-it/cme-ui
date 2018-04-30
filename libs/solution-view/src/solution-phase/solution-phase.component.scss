@@ -1,0 +1,21 @@
+@import './../solution-view';
+
+:host {
+  display: block;
+  position: relative;
+  width: $phase-width;
+}
+
+.phase-header {
+  height: $phase-header-height;
+  width: 100%;
+  background-color: $phase-header-background-color;
+  line-height: $phase-header-height;
+  text-align: center;
+  color: white;
+  font-size: 0.9rem; // todo: use global font sizing
+}
+
+.phase-header--selected {
+  color: mat-color($consort-yellow, 500);
+}

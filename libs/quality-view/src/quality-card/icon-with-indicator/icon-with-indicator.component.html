@@ -1,0 +1,4 @@
+<cme-inline-svg [src]="iconFullPath" [color]="healthColor"></cme-inline-svg>
+<div *ngIf="indicatorCount && indicatorCount > 0" [matTooltip]="indicatorTooltip" class="indicator indicator--right">
+  {{indicatorCount}}
+</div>

@@ -1,0 +1,6 @@
+<mat-card>
+  <mat-card-title>{{"home-view.context.title" | translate}}</mat-card-title>
+  <div id="context-diagram" class="context-diagram" #contextDiagram></div>
+  <div class="temp" #temp id="temp" [hidden]="error"></div>
+  <div class="error" *ngIf="error">{{"home-view.context.error" | translate}}</div>
+</mat-card>

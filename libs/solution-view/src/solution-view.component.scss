@@ -1,0 +1,39 @@
+@import './solution-view';
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: mat-color($consort-grey, 200);
+}
+
+.phase-container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.solution-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $phase-header-height;
+  background-color: $phase-header-background-color;
+}
+
+.add-phase-button-wrapper {
+  padding-top: 25%;
+  padding-right: 20%;
+  text-align: right;
+  height: 100%;
+  width: 100%;
+}
+
+.add-service-button-wrapper {
+  padding-top: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

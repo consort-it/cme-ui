@@ -1,0 +1,23 @@
+@import './../../solution-view';
+
+:host {
+  position: relative;
+  display: flex;
+  height: 70px;
+  background-color: mat-color($consort-grey, 200);
+}
+
+.toolbar-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+  font-size: 0.8rem;
+  color: mat-color($consort-grey, 900);
+}
+
+.toolbar-info__wrapper {
+  text-align: right;
+  padding-right: 20px;
+  padding-left: 5px;
+}

@@ -1,0 +1,19 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+
+$bar-height: 2px;
+
+:host {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: $bar-height;
+}
+
+.bar {
+  position: absolute;
+  height: $bar-height;
+  width: 100%;
+  background-color: mat-color($consort-blue, 400);
+  transform: translateX(-100%);
+}

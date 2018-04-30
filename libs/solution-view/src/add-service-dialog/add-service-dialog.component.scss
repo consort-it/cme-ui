@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+// todo: move to shared stylesheet
+.dialog-form {
+  display: block;
+  text-align: right;
+  padding: 1rem;
+}
+
+// todo: move to shared stylesheet
+.dialog-form__form-field {
+  width: 100%;
+}
+
+.phase-headline {
+  padding: 0 1rem;
+}

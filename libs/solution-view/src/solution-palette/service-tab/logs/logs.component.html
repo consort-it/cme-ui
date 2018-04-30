@@ -1,0 +1,14 @@
+<div class="log" [ngClass]="logState" [ngSwitch]="logState">
+  <div *ngSwitchCase="'log--found'">
+    <div class="log__entry" [ngClass]="logLine.class" *ngFor="let logLine of logLines">
+      <code class="log__entry--timestamp">{{ logLine.timestamp | date: ('palette.logs.timestamp-format' | translate ) }}</code>
+      <code>{{ logLine.message}}</code>
+    </div>
+  </div>
+  <span *ngSwitchCase="'log--notfound'">{{ 'palette.logs.No log entries available' | translate}}</span>
+  <div *ngSwitchCase="'log--loading'">
+    {{ 'palette.logs.Loading log' | translate}}
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  <span *ngSwitchCase="'log--error'">{{ 'palette.logs.Error' | translate: {'message': errorMessage} }}</span>
+</div>

@@ -1,0 +1,10 @@
+<mat-toolbar color="primary" class="dialog-toolbar mat-elevation-z1">
+  <span>{{ 'login-dialog.title' | translate }}</span>
+</mat-toolbar>
+
+<mat-toolbar *ngIf="errorMessage" color="warn" class="dialog-toolbar dialog-toolbar--error mat-elevation-z1">
+  <mat-icon aria-label="Error" class="mat-icon--small">error</mat-icon>
+  <span>{{errorMessage}}</span>
+</mat-toolbar>
+
+<amplify-authenticator></amplify-authenticator>

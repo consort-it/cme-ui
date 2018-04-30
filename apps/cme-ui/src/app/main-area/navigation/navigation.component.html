@@ -1,0 +1,11 @@
+<mat-nav-list>
+  <a mat-list-item class="navitem" *ngFor="let menuEntry of menuEntries" [routerLink]="menuEntry.link" (click)="onEntryClick()">
+    {{ menuEntry.translationKey | translate }}
+  </a>
+</mat-nav-list>
+<mat-divider></mat-divider>
+<mat-nav-list>
+  <a mat-list-item class="navitem" routerLink="/setupclusterconnection" title="Specify kubernetes cluster connections">
+    <mat-icon class="navitem__icon">settings</mat-icon>
+    {{ 'navigation.setup cluster' | translate }}</a>
+</mat-nav-list>

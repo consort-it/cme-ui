@@ -1,0 +1,15 @@
+<ng-container *ngIf="(projects$ | async)?.length > 0; else noProjects">
+  <button mat-button [matMenuTriggerFor]="projects">
+    <span *ngIf="(currentProject$ | async) === null">{{ 'header.select project' | translate }}</span>
+    <span>{{ (currentProject$ | async)?.name}}</span>
+    <mat-icon>arrow_drop_down</mat-icon>
+  </button>
+</ng-container>
+<ng-template #noProjects>
+  <span>{{ 'header.No projects available' | translate }}</span>
+</ng-template>
+<mat-menu #projects>
+  <button mat-menu-item *ngFor="let project of projects$ | async" (click)="setCurrentProject(project)">
+    <span>{{project.name}}</span>
+  </button>
+</mat-menu>

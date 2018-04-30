@@ -1,0 +1,48 @@
+{
+  "quality-view": {
+    "quality-card": {
+      "Code Quality": {
+        "description": "Ergebnisse von SonarQube (statische Codeanalyse)",
+        "title": "Codequalität"
+      },
+      "Contracts": {
+        "description": "Pact.io Tests für Interfaces",
+        "title": "Verträge"
+      },
+      "End to End": {
+        "description": "Protractor Tests",
+        "title": "End to End"
+      },
+      "Failing Builds": {
+        "description": "Fehlgeschlagene Builds in Jenkins für diese Lösung",
+        "title": "Fehlgeschlagene Builds"
+      },
+      "Log Errors": {
+        "description": "Microservice Logs",
+        "title": "Log Errors"
+      },
+      "Open Bugs": {
+        "description": "Bugs in Jira für diese Lösung",
+        "title": "Offene Bugs"
+      },
+      "Overall quality index": {
+        "description": "Unternehmenspezifisch gewichteter Index",
+        "title": "Allgemeiner Qualitätsindex"
+      },
+      "Smoke Tests": {
+        "description": "Cucumber Tests",
+        "title": "Smoke Tests"
+      },
+      "Vulnarabilities": {
+        "description": "Befunde des OWASP Scans",
+        "title": "Sicherheitslücken"
+      }
+    },
+    "quality-dashboard": {
+      "Integration Quality Gate": "Quality Gate: Integration",
+      "Pre-Integration Quality Gate": "Quality Gate: Pre-Integration",
+      "Summary": "Zusammenfassung"
+    },
+    "title": "Qualität"
+  }
+}

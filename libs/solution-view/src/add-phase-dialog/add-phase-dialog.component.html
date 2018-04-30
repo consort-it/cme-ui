@@ -1,0 +1,12 @@
+<cme-dialog-toolbar [title]="'add-phase-dialog.dialog title' | translate" [errorMessage]="errorMessage"></cme-dialog-toolbar>
+
+<form #form="ngForm" class="dialog-form" (ngSubmit)="submit(form.value.phaseName)">
+  <mat-form-field class="dialog-form__form-field">
+    <input matInput value="" autocomplete="off" [unique]="phaseNames" [placeholder]="'add-phase-dialog.placeholder' | translate"
+      id="phaseName" name="phaseName" ngModel="" required #phaseName="ngModel">
+    <mat-error *ngIf="phaseName.hasError('unique')">
+      {{ 'add-phase-dialog.validation error' | translate:{'name': phaseName.value } }}
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button class="mat-elevation-z0" color="primary" type="submit" [disabled]="!form.valid">{{'add-phase-dialog.submit button text' | translate}}</button>
+</form>

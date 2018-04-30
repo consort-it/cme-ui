@@ -1,0 +1,70 @@
+{
+  "add-phase-dialog": {
+    "dialog title": "Add Phase",
+    "placeholder": "Name of the new phase",
+    "submit button text": "Add",
+    "validation error": "Phase {{name}} already exists."
+  },
+  "add-service-dialog": {
+    "Select service Type": "Select service type",
+    "dialog title": "Add service",
+    "full url (with protocol)": "Full url (https://www.example.com)",
+    "placeholder": "name of the new service",
+    "submit button text": "Add",
+    "validation error": "Service {{name}} already exists.",
+    "validation error url": "Please specify a valid URL."
+  },
+  "palette": {
+    "last-commits": {
+      "Last Commits": "Last Commits:",
+      "timestamp-format": "MM/dd/yy hh:mm:ss"
+    },
+    "logs": {
+      "Error": "Error while loading data: {{message}}.",
+      "Loading log": "Loading log data...",
+      "No log entries available": "No log entries available.",
+      "timestamp-format": "MM/dd/yy hh:mm:ss.SSS a z"
+    },
+    "phase-tab": {
+      "add button tooltip": "Add new phase",
+      "delete button disabled tooltip": "Selected phase can not be deleted, since it still contains services",
+      "delete button tooltip": "Delete selected phase",
+      "toolbar infotext": "Create a new phase or edit or delete an existing"
+    },
+    "service-tab": {
+      "Logs": {
+        "Refresh logs": "Refresh logs"
+      },
+      "add button tooltip": "Add new microservice",
+      "delete button tooltip": "Delete {{name}} microservice",
+      "edit button tooltip": "Edit {{name}} microservice",
+      "expansion-title": {
+        "Code-Repo": "Code-Repo",
+        "Logs": "Logs",
+        "Open Tickets": "Open Tickets"
+      },
+      "toolbar infotext": "Create a new microservice or edit or delete an existing"
+    },
+    "tab-labels": {
+      "Open Tickets": "Open Tickets",
+      "Phase": "Phase",
+      "Project": "Project",
+      "Service": "Service"
+    },
+    "ticket-tab": {
+      "No tickets for": "No tickets for"
+    }
+  },
+  "solution-microservice": {
+    "boebbel tooltip": "open Jira tickets"
+  },
+  "solution-view": {
+    "Solution": "Solution",
+    "add phase": "Add phase",
+    "add service": "Add service",
+    "menu-entry": "Solution",
+    "solution-bread-crumb-component": {
+      "selected item": "Selected item"
+    }
+  }
+}

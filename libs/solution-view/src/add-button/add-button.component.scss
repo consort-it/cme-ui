@@ -1,0 +1,12 @@
+@import './../solution-view';
+
+:host {
+  display: inline-block;
+  color: mat-color($consort-grey, 400);
+  opacity: 0.5;
+  transition: opacity 0.25s ease-in-out;
+}
+
+:host:hover {
+  opacity: 1;
+}

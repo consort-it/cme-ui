@@ -1,0 +1,10 @@
+<div>
+  <ng-container *ngIf="value !== undefined && value !== null; else unknownValue">
+    <span class="value">{{value}}</span>
+    <span class="unit">{{unit}}</span>
+  </ng-container>
+  <ng-template #unknownValue>
+    <span class="value">--</span>
+  </ng-template>
+</div>
+<ng-content></ng-content>

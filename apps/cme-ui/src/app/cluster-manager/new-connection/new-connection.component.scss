@@ -1,0 +1,12 @@
+:host {
+    display: block;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-content__field {
+    width: 100%;
+}

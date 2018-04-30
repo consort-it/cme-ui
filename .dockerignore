@@ -1,0 +1,9 @@
+.git/
+node_modules/
+compodoc/
+coverage/
+unittestresults.html
+dist/
+Jenkinsfile
+generators/
+testresult/

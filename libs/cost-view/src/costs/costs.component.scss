@@ -1,0 +1,36 @@
+@import './libs/shared/src/styles/globals';
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.header {
+  height: $subheader-height;
+  padding-left: $navbutton-width;
+  background-color: mat-color($consort-blue, 200);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 15rem;
+  height: 100%;
+}
+
+.controls__item--date {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.cost-table {
+  padding-top: 1rem;
+  padding-left: $navbutton-width;
+  padding-right: 3rem;
+}

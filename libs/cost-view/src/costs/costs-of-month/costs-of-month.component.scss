@@ -1,0 +1,43 @@
+:host {
+  display: block;
+}
+
+.no-costs-text {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+/*
+ * Styles to make the cdk-table match the material design spec.
+ * REMOVE once the mat-table works with >es5 again -_-
+ */
+cdk-table {
+  flex: 1 1 auto;
+  overflow: auto;
+  max-height: 500px;
+}
+
+cdk-header-row,
+cdk-row {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  align-items: center;
+  height: 32px;
+  padding: 0 8px;
+}
+
+cdk-cell,
+cdk-header-cell {
+  flex: 1;
+}
+
+cdk-header-cell {
+  font-size: 12px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+cdk-cell {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.87);
+}

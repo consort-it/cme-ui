@@ -1,0 +1,17 @@
+/**
+ * Overrides for material styles.
+ * Must be included after angular-material-theme mix-in.
+ */
+@mixin angular-material-overrides() {
+  .mat-drawer-backdrop.mat-drawer-shown {
+    background-color: transparent;
+  }
+
+  .mat-dialog-container {
+    padding: 0 !important;
+  }
+
+  .mat-drawer-container {
+    background-color: transparent !important;
+  }
+}

@@ -1,0 +1,70 @@
+@mixin traceBackground($url) {
+  background: url($url) no-repeat center center;
+  background-size: 101% 101%;
+}
+
+:host {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+:host.solution-start {
+  @include traceBackground('../../../shared/src/assets/solution-view/trace-start.svg');
+}
+
+:host.solution-end {
+  @include traceBackground('../../../shared/src/assets/solution-view/trace-end.svg');
+}
+
+:host.horizontal {
+  @include traceBackground('../../../shared/src/assets/solution-view/trace-horizontal.svg');
+}
+
+:host.horizontal-south {
+  @include traceBackground('../../../shared/src/assets/solution-view/trace-horizontal-south.svg');
+}
+
+:host.horizontal-north {
+  @include traceBackground('../../../shared/src/assets/solution-view/trace-horizontal-north.svg');
+}
+
+:host.horizontal-north-south {
+  @include traceBackground('../../../shared/src/assets/solution-view/trace-horizontal-north-south.svg');
+}
+
+:host.empty {
+  @include traceBackground('../../../shared/src/assets/solution-view/trace-empty.svg');
+}
+
+:host.no-trace {
+  background: none;
+}
+
+:host.drag-and-drop-placeholder {
+  margin: 1rem;
+  border-radius: 1rem;
+  opacity: 0.25;
+  background: repeating-linear-gradient(45deg, #fff, #fff 10px, #ccc 10px, #ccc 20px);
+}
+
+:host.drag-in-progress {
+  opacity: 0.4;
+}
+
+:host:before {
+  content: '';
+  display: block;
+  padding-top: 87.5%;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

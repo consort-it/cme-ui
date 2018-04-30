@@ -1,0 +1,31 @@
+<form #form="ngForm" (ngSubmit)="create.emit(newConnection)">
+  <mat-card>
+    <mat-card-title>{{ 'cluster manager.title.Add new cluster connection' | translate }}</mat-card-title>
+
+    <mat-card-content class="form-content">
+
+      <mat-form-field class="form-content__field">
+        <mat-label>{{ 'cluster manager.Cluster hostname' | translate }}</mat-label>
+        <input matInput autofocus name="host" placeholder="https://dev.k8s.example.com" autocomplete="off" [(ngModel)]="newConnection.hostname"
+          required>
+      </mat-form-field>
+
+      <mat-form-field class="form-content__field">
+        <mat-label>{{ 'cluster manager.Namespace' | translate }}</mat-label>
+        <input matInput name="namespace" placeholder="dev" autocomplete="off" [(ngModel)]="newConnection.namespace" required>
+      </mat-form-field>
+
+      <mat-form-field class="form-content__field">
+        <mat-label>{{ 'cluster manager.Environment name' | translate }}</mat-label>
+        <input matInput name="environment" placeholder="Development Environment" autocomplete="off" [(ngModel)]="newConnection.environment"
+          required>
+      </mat-form-field>
+
+    </mat-card-content>
+
+    <mat-card-actions align="start">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">{{ 'global.Save' | translate }}</button>
+      <button mat-raised-button (click)="cancel.emit()">{{ 'global.Cancel' | translate }}</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -1,0 +1,17 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0 20rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffc400;
+  color: #353575;
+  font-family: 'Press Start 2P', cursive;
+  font-size: large;
+}

@@ -1,0 +1,72 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+@import './libs/shared/src/styles/globals';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.subheader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background-color: mat-color($consort-blue, 300);
+  height: $subheader-height;
+  padding-left: $navbutton-width;
+}
+
+.subheader__title {
+  flex-grow: 1;
+}
+
+.subheader__palette-header {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  right: 0;
+  top: 0;
+
+  background-color: mat-color($consort-blue, 400);
+
+  transition-property: transform;
+  transition-duration: $swift-ease-out-duration;
+  transition-timing-function: $swift-ease-out-timing-function;
+}
+
+.subheader__palette-header--visible {
+  transform: translateX(0%);
+}
+
+.subheader__palette-header--hidden {
+  transform: translateX(100%);
+}
+
+.subheader__palette-button {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.drawer-container {
+  height: 100%;
+}
+
+.drawer-container__drawer {
+  width: 50%;
+  height: 100%;
+  background-color: mat-color($consort-grey, 200);
+}
+
+.drawer-container__palette-wrapper {
+  height: 100%;
+}
+
+.subheader__palette-button {
+  color: white;
+}
+
+.drawer-container__content {
+  height: 100%;
+}

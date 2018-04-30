@@ -1,0 +1,39 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+
+.log {
+  display: block;
+  padding: .5rem;
+}
+
+.log--found {
+  background-color: mat-color($consort-blue, 800);
+}
+
+.log--notfound {
+  color: mat-color($consort-blue, 800);
+}
+
+.log__entry {
+  display: flex;
+  padding-bottom: 5px;
+}
+
+.log__entry--timestamp {
+  width: 100px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  padding-right: 10px;
+  font-size: small;
+}
+
+.log__entry--log,
+.log__entry--info,
+.log__entry--warning {
+  color: mat-contrast($consort-blue, 800);
+}
+
+.log--error,
+.log__entry--error {
+  color: mat-color($consort-red, 500);
+}

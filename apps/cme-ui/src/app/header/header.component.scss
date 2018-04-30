@@ -1,0 +1,78 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+
+.header {
+  font-size: 0.9rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 'left middle right';
+  align-items: center;
+}
+
+.header__left {
+  justify-self: start;
+  grid-area: left;
+  display: flex;
+  align-items: center;
+}
+
+.header__middle {
+  justify-self: center;
+  grid-area: middle;
+}
+
+.header__right {
+  justify-self: end;
+  grid-area: right;
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  width: 9rem;
+  height: auto;
+}
+
+.header__logo:focus {
+  outline: none;
+}
+
+.vertical-divider {
+  display: inline-block;
+  border-right: 1px solid mat-color($consort-blue, 300);
+  margin: 0 0.2rem;
+  height: 100%;
+}
+
+.header__notifications {
+  color: mat-color($consort-blue, 100);
+}
+
+.header__notifications-icon--on {
+  color: mat-color($consort-yellow, 500);
+}
+
+.header__notifications-icon--shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}

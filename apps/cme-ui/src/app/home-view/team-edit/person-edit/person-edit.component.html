@@ -1,0 +1,30 @@
+<form #form="ngForm">
+  <div class="form-content">
+    <mat-form-field>
+      <mat-label>{{"home-view.team.person.Name" | translate}}</mat-label>
+      <input matInput autofocus name="name" placeholder="John Doe" autocomplete="on" [(ngModel)]="name" required (ngModelChange)="nameChange.emit($event)">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{"home-view.team.person.Email" | translate}}</mat-label>
+      <input email matInput type="email" name="email" placeholder="john.doe@example.com" autocomplete="on" [(ngModel)]="email"
+        required (ngModelChange)="emailChange.emit($event)">
+    </mat-form-field>
+
+    <mat-selection-list name="roles" #list (selectionChange)="onSelectionChange($event)">
+      <mat-list-option value="Developer" [selected]="isSelected('Developer')">
+        {{"home-view.team.role.Developer" | translate}}
+      </mat-list-option>
+      <mat-list-option value="Operations" [selected]="isSelected('Operations')">
+        {{"home-view.team.role.Operations" | translate}}
+      </mat-list-option>
+      <mat-list-option value="Product Owner" [selected]="isSelected('Product Owner')">
+        {{"home-view.team.role.Product Owner" | translate}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+
+  <button mat-mini-fab color="primary" (click)="removePerson.emit()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</form>

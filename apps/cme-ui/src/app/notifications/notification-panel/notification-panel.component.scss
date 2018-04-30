@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+
+$color-background: white;
+
+:host {
+    background-color:$color-background;
+    display: block;
+    border-radius: 2px;
+    padding: .4rem;
+    max-width: 600px;
+}

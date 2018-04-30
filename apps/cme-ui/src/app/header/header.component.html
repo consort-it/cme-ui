@@ -1,0 +1,32 @@
+<mat-toolbar color="primary" class="header mat-elevation-z3">
+
+  <div class="header__left" (click)="onHornetClick()">
+    <img class="header__logo" src="../../assets/cme_hornet_logo_small.svg" alt="cme-hornet">
+  </div>
+
+  <cme-project-dropdown class="header__middle" *ngIf="isAuthenticated$ | async">
+  </cme-project-dropdown>
+
+  <div class="header__right">
+    <div class="header__notifications">
+      <span class="vertical-divider">&nbsp;</span>
+      <button #notificationButton mat-icon-button (click)="onNotificationClick()">
+        <mat-icon [class.header__notifications-icon--shake]="shakeIt$ | async" [class.header__notifications-icon--on]="(notificationService.notificationCount$ | async) > 0"
+          class="header__notifications-icon">notifications</mat-icon>
+      </button>
+    </div>
+    <div class="header__user">
+      <span class="vertical-divider">&nbsp;</span>
+      <button mat-button [matMenuTriggerFor]="logoutMenu">
+        <mat-icon>person</mat-icon>
+        <span>{{user$ | async}}</span>
+      </button>
+      <mat-menu #logoutMenu>
+        <button mat-menu-item (click)="logout()">
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+
+</mat-toolbar>

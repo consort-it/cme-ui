@@ -1,0 +1,15 @@
+<cme-header class="header"></cme-header>
+
+<div class="view">
+  <cme-main-area>
+    <div class="view__router-outlet-wrapper" [@presentationAnimation]="getPresentationAnimationState(outlet)">
+
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+  </cme-main-area>
+  <cme-presentation-progress-bar class="presentation-progress-bar"></cme-presentation-progress-bar>
+</div>
+
+<cme-footer class="footer"></cme-footer>
+
+<cme-login></cme-login>

@@ -1,0 +1,17 @@
+<mat-slider [(ngModel)]="healthIndex1">
+</mat-slider>
+<cme-quality-card [title]="'Failing Builds'" [description]="'Recently failing builds on Jenkins'">
+
+    <cme-icon-with-indicator [healthIndex]="healthIndex1" [iconName]="'shield.svg'" [indicatorLeft]="{ value: '5', tooltip: ''}"
+        [indicatorRight]="{ value: '9', tooltip: 'Rechter Böbbel'}"></cme-icon-with-indicator>
+</cme-quality-card>
+
+
+<cme-quality-card [title]="'Code Quality'" [description]="'SonarQube findings on your code'">
+    <cme-icon-with-indicator [healthIndex]="healthIndex3" [iconName]="'bug.svg'" [indicatorLeft]="{ value: '3', tooltip: 'Issues found'}"
+        [indicatorRight]="{ value: '7', tooltip: 'Bugs found'}"></cme-icon-with-indicator>
+</cme-quality-card>
+
+<cme-quality-card [title]="'test-service'" [description]="'Overall solution quality status'">
+    <cme-value [value]="'77'"></cme-value>
+</cme-quality-card>

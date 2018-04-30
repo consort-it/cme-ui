@@ -1,0 +1,12 @@
+<div class="header">
+  <div class="controls">
+    <button mat-icon-button (click)="previousMonth()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <div class="controls__item controls__item--date">{{ 'global.month.' + monthOfYear.month | translate}} {{monthOfYear.year}}</div>
+    <button mat-icon-button (click)="nextMonth()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</div>
+<cme-costs-of-month class="cost-table" [month]="monthOfYear"></cme-costs-of-month>

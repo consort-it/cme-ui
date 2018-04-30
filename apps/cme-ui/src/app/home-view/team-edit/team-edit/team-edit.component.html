@@ -1,0 +1,18 @@
+<mat-accordion class="accordion">
+  <mat-expansion-panel *ngFor="let person of project?.team">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{person.name}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <cme-person-edit class="person-card" [(name)]="person.name" [(email)]="person.email" [(selectedRoles)]="person.roles" (removePerson)="onRemovePerson(person)">
+
+    </cme-person-edit>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<button mat-raised-button color="primary" [disabled]="!isValid" (click)="projectChange.emit(project)">{{"home-view.team.Save" | translate}}</button>
+<button mat-mini-fab color="primary" (click)="onAddPerson()">
+  <mat-icon>person_add</mat-icon>
+</button>

@@ -1,0 +1,17 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+
+:host {
+  display: block;
+  height: 100%;
+  background-color: mat-color($consort-blue, 400);
+  padding-top: 40px;
+}
+
+.navitem {
+  color: mat-contrast($consort-blue, 400);
+}
+
+.navitem__icon {
+  margin-right: .5rem;
+}

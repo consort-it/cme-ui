@@ -1,0 +1,12 @@
+.form-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-content > * {
+  width: 100%;
+}
+
+:host {
+  display: block;
+}

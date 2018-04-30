@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,700');
+
+@import '~@angular/material/theming';
+@import './consort-theme';
+@import './material_overrides';
+
+$general-typography: mat-typography-config(
+  $font-family: 'Poppins, sans-serif',
+  $body-2: mat-typography-level(14px, 24px, 600)
+);
+
+$secondary-typography: mat-typography-config($font-family: 'Poppins, sans-serif');
+
+@include mat-core($general-typography);
+
+$consort-primary: mat-palette($consort-blue);
+$consort-accent: mat-palette($consort-yellow, 500, 700, 800);
+$consort-warn: mat-palette($consort-red);
+$consort-theme: mat-light-theme($consort-primary, $consort-accent, $consort-warn);
+
+@include angular-material-theme($consort-theme);
+@include angular-material-overrides();
+
+// General styling
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #2b2a63;
+  background-color: #f2f3f4;
+  margin: 0;
+  height: 100%;
+}

@@ -1,0 +1,8 @@
+<mat-toolbar color="primary" class="dialog-toolbar mat-elevation-z1">
+  <span>{{title}}</span>
+</mat-toolbar>
+
+<mat-toolbar *ngIf="errorMessage" color="warn" class="dialog-toolbar dialog-toolbar--error mat-elevation-z1">
+  <mat-icon aria-label="Error">error</mat-icon>
+  <span>{{errorMessage}}</span>
+</mat-toolbar>

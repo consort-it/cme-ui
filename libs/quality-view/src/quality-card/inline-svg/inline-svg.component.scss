@@ -1,0 +1,8 @@
+:host {
+  height: 100%;
+  display: block;
+}
+
+::ng-deep svg {
+  max-height: 5rem;
+}

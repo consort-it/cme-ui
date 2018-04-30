@@ -1,0 +1,5 @@
+<div class="tooltip-wrapper" (click)="handleClick($event)" [matTooltipDisabled]="disableTooltip" [matTooltip]="tooltip">
+  <button [disabled]="disabled" mat-button color="" (click)="handleClick($event)">
+    <mat-icon (click)="handleClick($event)">{{icon}}</mat-icon>
+  </button>
+</div>

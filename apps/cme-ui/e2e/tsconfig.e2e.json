@@ -1,0 +1,26 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../../dist/out-tsc/e2e/cme-ui",
+    "module": "commonjs",
+    "target": "es5",
+    "types": [
+      "jasmine",
+      "jasminewd2",
+      "node"
+    ]
+  },
+  "include": [
+    "../**/*.ts"
+    /* add all lazy-loaded libraries here: "../../../libs/my-lib/index.ts" */
+  
+    , "../../../libs/project-grid-view/index.ts"
+
+    , "../../../libs/cost-view/index.ts"
+
+    , "../../../libs/quality-view/index.ts"
+],
+  "exclude": [
+    "**/*.spec.ts"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "cluster manager": {
+    "Add connection": "Verbindung hinzufügen",
+    "Clear all": "Alle löschen",
+    "Cluster Connections": "Clusterverbindung",
+    "Cluster hostname": "Cluster-Hostname",
+    "Environment": "Umgebung",
+    "Environment name": "Name der Umgebung",
+    "Go to home": "Zur Übersicht",
+    "Hostname": "Hostname",
+    "Namespace": "Namensraum",
+    "is current": "aktuell",
+    "please set at least one cluster connection": "Bitte mindestens eine Clusterverbindung erstellen",
+    "title": {
+      "Add new cluster connection": "Neue Clusterverbindung hinzufügen",
+      "define cluster connections": "Definiere Clusterverbindungen"
+    }
+  },
+  "cluster-not-reachable-view": {
+    "Cannot connect to metadata-service": "Keine Verbindung zum metadata-service"
+  },
+  "cost-view": {
+    "menu-entry": "Kosten"
+  },
+  "footer": {
+    "select environment": "Wähle Umgebung",
+    "select language": "Wähle Sprache",
+    "setup cluster": "Cluster einstellen",
+    "toggle presentation mode": "Präsentationsmodus ein/aus"
+  },
+  "global": {
+    "Cancel": "Abbrechen",
+    "Delete": "Löschen",
+    "Save": "Speichern",
+    "english": "Englisch",
+    "german": "Deutsch",
+    "month": {
+      "0": "Januar",
+      "1": "Februar",
+      "2": "März",
+      "3": "April",
+      "4": "Mai",
+      "5": "Juni",
+      "6": "Juli",
+      "7": "August",
+      "8": "September",
+      "9": "Oktober",
+      "10": "November",
+      "11": "Dezember"
+    }
+  },
+  "header": {
+    "No projects available": "Keine Projekte verfügbar",
+    "select project": "Projekt Wählen"
+  },
+  "home-palette": {
+    "tab-labels": {
+      "Context": "Kontext",
+      "Team": "Team"
+    }
+  },
+  "home-view": {
+    "Home": "Übersicht",
+    "context-tab": {
+      "save": "Kontextdiagramm speichern"
+    },
+    "context": {
+      "error": "Das Kontext-Diagramm konnte nicht gelesen werden.",
+      "title": "Kontext-Diagramm"
+    },
+    "menu-entry": "Übersicht",
+    "team": {
+      "Developers": "Entwickler",
+      "Microservices": "Microservices",
+      "Ops": "Betrieb",
+      "Overview": "Team Übersicht",
+      "ProductOwners": "Product Owner",
+      "Save": "Speichern",
+      "ServiceRegistry": "Dienst Verzeichnis",
+      "UserInterfaces": "Benutzeroberflächen",
+      "person": {
+        "Email": "Email",
+        "Name": "Name"
+      },
+      "role": {
+        "Developer": "Entwickler",
+        "Operations": "Betrieb",
+        "Product Owner": "Produktmanager"
+      }
+    }
+  },
+  "login-dialog": {
+    "password": "Passwort",
+    "title": "Anmelden",
+    "user": "Benutzername"
+  },
+  "navigation": {
+    "home": "Übersicht",
+    "setup cluster": "Cluster einstellen"
+  },
+  "not-logged-in-view": {
+    "Please Log In": "Bitte melden Sie sich an"
+  },
+  "quality-view": {
+    "menu-entry": "Qualität"
+  },
+  "solution-view": {
+    "menu-entry": "Lösung"
+  }
+}

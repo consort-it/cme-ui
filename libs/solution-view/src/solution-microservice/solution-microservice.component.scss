@@ -1,0 +1,67 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+
+$honeycomb-size: 6rem;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.service-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-info-name {
+  color: mat-color($consort-blue, 500);
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.service-info-version {
+  color: mat-color($consort-blue, 100);
+  font-size: 0.7rem;
+  margin-top: 0;
+  margin-bottom: 0.1rem;
+}
+
+.honeycomb {
+  max-width: $honeycomb-size;
+  max-height: $honeycomb-size;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: $honeycomb-size;
+  margin-bottom: 0.3rem;
+}
+
+.honeycomb--selected #selected {
+  display: block;
+}
+
+.honeycomb--broken #broken {
+  display: block;
+}
+
+.honeycomb--running #running {
+  display: block;
+}
+
+.honeycomb--boebble-visible #boebbel {
+  display: block;
+  font-weight: 100;
+  font-size: 0.8rem;
+}
+
+#boebbel:focus {
+  outline: none;
+}

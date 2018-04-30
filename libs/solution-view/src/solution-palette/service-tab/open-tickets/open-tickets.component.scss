@@ -1,0 +1,45 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+
+.list-item-container {
+    width: 100%;
+    padding: .3rem;
+
+    &:hover {
+        background-color: mat-color($consort-grey, 200);
+        cursor: pointer;
+    }
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.list-item__title {
+    flex: 1 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 1rem;
+    white-space: nowrap;
+}
+
+.list-item__status {
+    flex: 0 0 auto;
+    padding-left: 1rem;
+    font-size: small;
+    color: mat-color($consort-grey, 800);
+}
+
+.list-item__key {
+    flex: 0 0 auto;
+    font-size: small;
+    min-width: 90px;
+    color: mat-color($consort-grey, 800);
+}
+
+.list-item__date {
+    font-size: small;
+    color: mat-color($consort-grey, 800);
+}

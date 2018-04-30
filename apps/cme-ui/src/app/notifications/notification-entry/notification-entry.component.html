@@ -1,0 +1,9 @@
+<mat-icon class="notification__icon" [ngClass]="{ 'notification__icon--info': iconType === 'info', 'notification__icon--warning': iconType === 'warning', 'notification__icon--error': iconType === 'error'}">
+  {{iconType}}</mat-icon>
+
+<div class="notification__text">
+  <span class="notification__text-title">{{shorten(notification?.title, 60)}}</span>
+  <br/>
+  <span class="notification__text-description">{{shorten(notification?.description, 140)}}</span>
+</div>
+<div class="notification__timestamp">{{notification?.timestamp | date:'short'}}</div>

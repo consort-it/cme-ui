@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["**/*.spec.ts"],
+  "types": ["node"]
+}

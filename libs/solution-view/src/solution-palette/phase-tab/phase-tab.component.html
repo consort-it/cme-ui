@@ -1,0 +1,7 @@
+<cme-palette-toolbar [infotext]="'palette.phase-tab.toolbar infotext' | translate">
+  <cme-palette-toolbar-button icon="add" [tooltip]="'palette.phase-tab.add button tooltip' | translate" (click)="addNewPhase()"></cme-palette-toolbar-button>
+  <cme-palette-toolbar-button icon="delete" [tooltip]="(deleteDisabled ? 'palette.phase-tab.delete button disabled tooltip' : 'palette.phase-tab.delete button tooltip') | translate"
+    [disabled]="deleteDisabled" [disableTooltip]="!selectedPhase" (click)="deletePhase()"></cme-palette-toolbar-button>
+</cme-palette-toolbar>
+
+Current phase: {{ selectedPhase?.name }}

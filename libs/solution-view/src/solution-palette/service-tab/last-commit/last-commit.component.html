@@ -1,0 +1,8 @@
+<p>{{'palette.last-commits.Last Commits' | translate}}</p>
+<mat-progress-bar [mode]="'indeterminate'" *ngIf="lastCommitService.fetching$ | async"></mat-progress-bar>
+<code class="commit" *ngFor="let commit of lastCommitService.lastCommits$ | async">
+  <span class="commit__part commit__part--bullet">{{commit.id}}</span>
+  <span class="commit__part commit__part--date">({{commit.date | date: ('palette.last-commits.timestamp-format' | translate)}}) </span>
+  <span class="commit__part commit__part--name">&lt;{{commit.committer}}&gt;</span>
+  <span class="commit__part commit__part--message">{{commit.message}}</span>
+</code>

@@ -1,0 +1,13 @@
+{{ ('solution-view.solution-bread-crumb-component.selected item' | translate) }}
+
+<ng-container *ngIf="showProjectCrumb">
+  <span class="arrow">></span>{{ projectName }}
+</ng-container>
+
+<ng-container *ngIf="showPhaseCrumb">
+  <span class="arrow">></span>{{ phaseName }}
+</ng-container>
+
+<ng-container *ngIf="showServiceCrumb">
+  <span class="arrow">></span>{{ serviceName }}
+</ng-container>

@@ -1,0 +1,17 @@
+<div class="phase-header" (click)="headerClicked()" [class.phase-header--selected]="phaseSelected">
+  {{ phase?.name }}
+</div>
+
+<div class="services-container" *ngIf="phase">
+  <cme-solution-trace cmeMicroserviceDragAndDrop #trace (cmeDragstart)="trace.noTrace = true" (cmeDragend)="trace.noTrace = false"
+    [traceType]="getTraceType(service)" [dragAndDropKey]="service.name" [dragAndDropPhase]="phaseName" *ngFor="let service of services">
+    <cme-solution-microservice [service]="service"></cme-solution-microservice>
+  </cme-solution-trace>
+
+  <ng-container *ngIf="services.length === 0">
+    <cme-solution-trace cmeMicroserviceDragAndDrop [dragAndDropKey]="" [draggable]="false" [usePlaceholderOnDragover]="false"
+      [dragAndDropPhase]="phaseName" [traceType]="TraceType.Empty"></cme-solution-trace>
+  </ng-container>
+</div>
+
+<ng-content></ng-content>

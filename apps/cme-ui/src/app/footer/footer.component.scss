@@ -1,0 +1,69 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+
+$icon-size: 1.1rem;
+
+:host {
+  background-color: mat-color($consort-grey, 300);
+  color: mat-color($consort-grey, 700);
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'left right';
+  align-items: center;
+}
+
+.footer-left {
+  justify-self: start;
+  grid-area: left;
+  display: flex;
+  align-items: center;
+}
+
+.footer-right {
+  justify-self: end;
+  grid-area: right;
+  display: flex;
+  align-items: center;
+}
+
+.vertical-divider {
+  display: inline-block;
+  border-right: 1px solid mat-color($consort-grey, 500);
+  margin: 0 0.2rem;
+  height: 100%;
+  width: 1px;
+  overflow: hidden;
+}
+
+.footer-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.3rem;
+  background-color: transparent;
+  border: 0;
+  color: mat-color($consort-grey, 700);
+}
+
+.footer-button:focus {
+  outline: none;
+}
+
+.footer-button__icon {
+  height: $icon-size;
+  width: $icon-size;
+  font-size: $icon-size;
+}
+
+.footer-button__description {
+  margin-left: 0.3rem;
+}
+
+.slide-show-button--on {
+  color: mat-color($consort-blue, 400);
+}
+
+.slide-show-button--off {
+  color: mat-color($consort-grey, 700);
+}

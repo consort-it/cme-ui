@@ -1,0 +1,46 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+
+:host {
+    display: flex;
+    padding: .8rem 0;
+}
+
+:host:hover {
+    background-color:rgba(0, 0, 0, 0.04); // TODO check if that's correct
+}
+
+.notification__icon {
+    padding: 0 .4rem;
+    width: 40px;
+}
+
+.notification__icon--error {
+    color: mat-color($consort-red, 500);
+}
+
+.notification__icon--warning {
+    color: mat-color($consort-yellow, 500);
+}
+
+.notification__icon--info {
+    color: mat-color($consort-grey, 500);
+}
+
+.notification__text {
+    flex-grow: 1;
+    margin: 0 .4rem;
+}
+
+.notification__text-title {
+    font-weight: bold;
+    
+}
+
+.notification__timestamp {
+    margin: 0 1rem;
+    flex-grow: 0;
+    min-width: 110px;
+    color: mat-color($consort-grey, 700);
+    font-size: .8rem;
+}

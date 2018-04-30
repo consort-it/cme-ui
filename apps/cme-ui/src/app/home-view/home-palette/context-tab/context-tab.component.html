@@ -1,0 +1,4 @@
+<form class="context-form" #form="ngForm" (ngSubmit)="save(form.value)">
+  <textarea name="diagram" id="diagram" [(ngModel)]="diagram"></textarea>
+  <button mat-raised-button class="mat-elevation-z0" color="primary" type="submit">{{"home-view.context-tab.save" | translate}}</button>
+</form>

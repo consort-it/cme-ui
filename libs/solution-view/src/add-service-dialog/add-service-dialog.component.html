@@ -1,0 +1,27 @@
+<cme-dialog-toolbar [title]="'add-service-dialog.dialog title' | translate" [errorMessage]="errorMessage"></cme-dialog-toolbar>
+
+<p class="phase-headline" *ngIf="currentPhaseName">Add a new service to phase {{currentPhaseName}}</p>
+
+<form #form="ngForm" class="dialog-form" (ngSubmit)="submit(form.value)">
+  <mat-form-field class="dialog-form__form-field">
+    <input matInput value="" autocomplete="off" [unique]="metadataService.currentServices$ | async" [placeholder]="'add-service-dialog.placeholder' | translate"
+      id="serviceName" name="serviceName" ngModel="" required #serviceName="ngModel">
+    <mat-error *ngIf="serviceName.hasError('unique')">
+      {{ 'add-service-dialog.validation error' | translate:{'name': serviceName.value } }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="dialog-form__form-field">
+    <mat-select [(value)]="serviceType" name="serviceType" id="serviceType" ngModel="" [placeholder]="'add-service-dialog.Select service Type' | translate">
+      <mat-option [value]="MetadataServiceType.Backend">Backend</mat-option>
+      <mat-option [value]="MetadataServiceType.UI">UI</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="dialog-form__form-field" *ngIf="serviceType === MetadataServiceType.UI">
+    <input matInput autocomplete="off" [placeholder]="'add-service-dialog.full url (with protocol)' | translate" id="serviceUrl"
+      name="serviceUrl" ngModel="" #serviceUrl="ngModel" url>
+    <mat-error *ngIf="serviceUrl.hasError('url')">
+      {{ 'add-service-dialog.validation error url' | translate}}
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button class="mat-elevation-z0" color="primary" type="submit" [disabled]="!form.valid">{{'add-service-dialog.submit button text' | translate}}</button>
+</form>

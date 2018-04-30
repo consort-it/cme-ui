@@ -1,0 +1,10 @@
+<cme-view-container [title]="'home-view.Home' | translate">
+  <div cmeViewContainerContent class="content">
+
+      <cme-team-view [project]="metadataService.currentProject$ | async"></cme-team-view>
+
+      <cme-context-view></cme-context-view>
+
+  </div>
+  <cme-home-palette cmeViewContainerPalette></cme-home-palette>
+</cme-view-container>

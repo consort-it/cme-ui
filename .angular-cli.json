@@ -1,0 +1,295 @@
+{
+  "$schema": "./node_modules/@nrwl/schematics/src/schema.json",
+  "project": {
+    "name": "cme2",
+    "npmScope": "cme2",
+    "latestMigration": "20180412-nx-update-scripts"
+  },
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "./tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/cme-ui/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/cme-ui/e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/showcase/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/showcase/e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/pact/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "apps": [
+    {
+      "name": "cme-ui",
+      "root": "apps/cme-ui/src",
+      "outDir": "dist/apps/cme-ui",
+      "assets": [
+        "assets",
+        "favicon.ico",
+        {
+          "glob": "**/*",
+          "input": "../../../libs/shared/src/assets",
+          "output": "./assets"
+        },
+        {
+          "glob": "**/*",
+          "input": "../../../libs/i18n/src/assets",
+          "output": "./assets/i18n"
+        }
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "../../../test.js",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "../../../tsconfig.spec.json",
+      "prefix": "cme",
+      "styles": ["styles.scss"],
+      "scripts": ["../../../node_modules/mermaid/dist/mermaid.min.js"],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      },
+      "tags": ["app", "cme-ui"]
+    },
+    {
+      "name": "pact",
+      "root": "apps/pact/src",
+      "outDir": "dist/apps/pact",
+      "assets": [
+        "assets",
+        "favicon.ico",
+        {
+          "glob": "**/*",
+          "input": "../../../libs/shared/src/assets",
+          "output": "./assets"
+        },
+        {
+          "glob": "**/*",
+          "input": "../../../libs/i18n/src/assets",
+          "output": "./assets/i18n"
+        }
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "../test-pact.js",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "../../../tsconfig.spec.json",
+      "prefix": "cme",
+      "styles": ["styles.scss"],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      },
+      "tags": ["pact"]
+    },
+    {
+      "name": "showcase",
+      "root": "apps/showcase/src",
+      "outDir": "dist/apps/showcase",
+      "assets": [
+        "assets",
+        "favicon.ico",
+        {
+          "glob": "**/*",
+          "input": "../../../libs/shared/src/assets",
+          "output": "./assets"
+        },
+        {
+          "glob": "**/*",
+          "input": "../../../libs/i18n/src/assets",
+          "output": "./assets/i18n"
+        }
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "../../../test.js",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "../../../tsconfig.spec.json",
+      "prefix": "cme",
+      "styles": ["styles.scss"],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      },
+      "tags": ["app", "showcase"]
+    },
+    {
+      "name": "aws-amplify-angular-yolo",
+      "root": "libs/aws-amplify-angular-yolo/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["login"],
+      "tsconfig": "tsconfig.app.json"
+    },
+    {
+      "name": "connector-aws-costs",
+      "root": "libs/connector-aws-costs/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["view-connector"]
+    },
+    {
+      "name": "connector-base",
+      "root": "libs/connector-base/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["connector-base"]
+    },
+    {
+      "name": "connector-cloudwatch-logs",
+      "root": "libs/connector-cloudwatch-logs/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["view-connector"]
+    },
+    {
+      "name": "connector-gitlab",
+      "root": "libs/connector-gitlab/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["view-connector"]
+    },
+    {
+      "name": "connector-jira",
+      "root": "libs/connector-jira/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["view-connector"]
+    },
+    {
+      "name": "connector-kubernetes",
+      "root": "libs/connector-kubernetes/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["core-connector"]
+    },
+    {
+      "name": "connector-metadata",
+      "root": "libs/connector-metadata/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["core-connector"]
+    },
+    {
+      "name": "connector-quality",
+      "root": "libs/connector-quality/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["view-connector"]
+    },
+    {
+      "name": "core-services",
+      "root": "libs/core-services/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["core-services"]
+    },
+    {
+      "name": "cost-view",
+      "root": "libs/cost-view/src",
+      "test": "../../../test.js",
+      "prefix": "cme",
+      "appRoot": "",
+      "tags": ["view"]
+    },
+    {
+      "name": "i18n",
+      "root": "libs/i18n/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["i18n", "free4all"]
+    },
+    {
+      "name": "logging",
+      "root": "libs/logging/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["logging", "free4all"]
+    },
+    {
+      "name": "quality-view",
+      "root": "libs/quality-view/src",
+      "prefix": "cme",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["view"]
+    },
+    {
+      "name": "rxjs-utils",
+      "root": "libs/rxjs-utils/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["free4all"]
+    },
+    {
+      "name": "shared",
+      "root": "libs/shared/src",
+      "test": "../../../test.js",
+      "prefix": "cme",
+      "appRoot": "",
+      "tags": ["shared"]
+    },
+    {
+      "name": "solution-view",
+      "root": "libs/solution-view/src",
+      "test": "../../../test.js",
+      "prefix": "cme",
+      "appRoot": "",
+      "tags": ["view", "solution-view"]
+    },
+    {
+      "name": "testing",
+      "root": "libs/testing/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": ["testing", "free4all"]
+    },
+    {
+      "name": "$workspaceRoot",
+      "root": ".",
+      "appRoot": "",
+      "tags": []
+    }
+  ],
+  "defaults": {
+    "schematics": {
+      "collection": "@nrwl/schematics"
+    },
+    "styleExt": "scss",
+    "component": {}
+  },
+  "warnings": {
+    "typescriptMismatch": false
+  }
+}
