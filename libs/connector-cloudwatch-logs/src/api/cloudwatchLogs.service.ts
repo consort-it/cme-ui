@@ -51,10 +51,30 @@ export class CloudwatchLogsService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public getGroupByID(gid: string, observe?: 'body', reportProgress?: boolean): Observable<Group>;
-  public getGroupByID(gid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Group>>;
-  public getGroupByID(gid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Group>>;
-  public getGroupByID(gid: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  public getGroupByID(
+    gid: string,
+    observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<Group>;
+  public getGroupByID(
+    gid: string,
+    observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<HttpResponse<Group>>;
+  public getGroupByID(
+    gid: string,
+    observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<Group>>;
+  public getGroupByID(
+    gid: string,
+    observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress: boolean = false
+  ): Observable<any> {
     if (gid === null || gid === undefined) {
       throw new Error('Required parameter gid was null or undefined when calling getGroupByID.');
     }
@@ -72,6 +92,7 @@ export class CloudwatchLogsService {
     const consumes: string[] = [];
 
     return this.httpClient.get<Group>(`${this.hostnameAndServiceBasePath}/groups/${encodeURIComponent(String(gid))}`, {
+      responseType: <any>responseType,
       withCredentials: this.configuration.withCredentials,
       headers: headers,
       observe: observe,
@@ -85,10 +106,26 @@ export class CloudwatchLogsService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public getGroups(observe?: 'body', reportProgress?: boolean): Observable<Array<Group>>;
-  public getGroups(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Group>>>;
-  public getGroups(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Group>>>;
-  public getGroups(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  public getGroups(
+    observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<Array<Group>>;
+  public getGroups(
+    observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<HttpResponse<Array<Group>>>;
+  public getGroups(
+    observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<Array<Group>>>;
+  public getGroups(
+    observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress: boolean = false
+  ): Observable<any> {
     let headers = this.defaultHeaders;
 
     // to determine the Accept header
@@ -102,6 +139,7 @@ export class CloudwatchLogsService {
     const consumes: string[] = [];
 
     return this.httpClient.get<Array<Group>>(`${this.hostnameAndServiceBasePath}/groups`, {
+      responseType: <any>responseType,
       withCredentials: this.configuration.withCredentials,
       headers: headers,
       observe: observe,
@@ -119,21 +157,25 @@ export class CloudwatchLogsService {
   public getLogsByMicroService(
     microserviceName: string,
     observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<Array<LogEntry>>;
   public getLogsByMicroService(
     microserviceName: string,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Array<LogEntry>>>;
   public getLogsByMicroService(
     microserviceName: string,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<Array<LogEntry>>>;
   public getLogsByMicroService(
     microserviceName: string,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (microserviceName === null || microserviceName === undefined) {
@@ -155,6 +197,7 @@ export class CloudwatchLogsService {
     return this.httpClient.get<Array<LogEntry>>(
       `${this.hostnameAndServiceBasePath}/${encodeURIComponent(String(microserviceName))}`,
       {
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,
@@ -175,24 +218,28 @@ export class CloudwatchLogsService {
     sid: string,
     limit?: number,
     observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<Array<Logs>>;
   public getLogsByStreamID(
     sid: string,
     limit?: number,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Array<Logs>>>;
   public getLogsByStreamID(
     sid: string,
     limit?: number,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<Array<Logs>>>;
   public getLogsByStreamID(
     sid: string,
     limit?: number,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (sid === null || sid === undefined) {
@@ -220,6 +267,7 @@ export class CloudwatchLogsService {
       `${this.hostnameAndServiceBasePath}/streams/${encodeURIComponent(String(sid))}/logs`,
       {
         params: queryParameters,
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,
@@ -242,6 +290,7 @@ export class CloudwatchLogsService {
     sid: string,
     limit?: number,
     observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<Array<LogEntry>>;
   public getLogsByStreamIDByGroupID(
@@ -249,6 +298,7 @@ export class CloudwatchLogsService {
     sid: string,
     limit?: number,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Array<LogEntry>>>;
   public getLogsByStreamIDByGroupID(
@@ -256,6 +306,7 @@ export class CloudwatchLogsService {
     sid: string,
     limit?: number,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<Array<LogEntry>>>;
   public getLogsByStreamIDByGroupID(
@@ -263,6 +314,7 @@ export class CloudwatchLogsService {
     sid: string,
     limit?: number,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (gid === null || gid === undefined) {
@@ -295,6 +347,7 @@ export class CloudwatchLogsService {
       )}/logs`,
       {
         params: queryParameters,
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,
@@ -313,21 +366,25 @@ export class CloudwatchLogsService {
   public getSearchedGroupsByPartialID(
     partial: string,
     observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<Array<Group>>;
   public getSearchedGroupsByPartialID(
     partial: string,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Array<Group>>>;
   public getSearchedGroupsByPartialID(
     partial: string,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<Array<Group>>>;
   public getSearchedGroupsByPartialID(
     partial: string,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (partial === null || partial === undefined) {
@@ -349,6 +406,7 @@ export class CloudwatchLogsService {
     return this.httpClient.get<Array<Group>>(
       `${this.hostnameAndServiceBasePath}/search/groups/${encodeURIComponent(String(partial))}`,
       {
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,
@@ -367,21 +425,25 @@ export class CloudwatchLogsService {
   public getSearchedStreamsByPartialID(
     partial: string,
     observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<Array<Stream>>;
   public getSearchedStreamsByPartialID(
     partial: string,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Array<Stream>>>;
   public getSearchedStreamsByPartialID(
     partial: string,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<Array<Stream>>>;
   public getSearchedStreamsByPartialID(
     partial: string,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (partial === null || partial === undefined) {
@@ -403,6 +465,7 @@ export class CloudwatchLogsService {
     return this.httpClient.get<Array<Stream>>(
       `${this.hostnameAndServiceBasePath}/search/streams/${encodeURIComponent(String(partial))}`,
       {
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,
@@ -419,23 +482,32 @@ export class CloudwatchLogsService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public getStreamByIDByGroupID(gid: string, sid: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+  public getStreamByIDByGroupID(
+    gid: string,
+    sid: string,
+    observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<any>;
   public getStreamByIDByGroupID(
     gid: string,
     sid: string,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<any>>;
   public getStreamByIDByGroupID(
     gid: string,
     sid: string,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<any>>;
   public getStreamByIDByGroupID(
     gid: string,
     sid: string,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (gid === null || gid === undefined) {
@@ -462,6 +534,7 @@ export class CloudwatchLogsService {
         String(sid)
       )}`,
       {
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,
@@ -477,18 +550,30 @@ export class CloudwatchLogsService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public getStreamsByGroupID(gid: string, observe?: 'body', reportProgress?: boolean): Observable<Array<Stream>>;
+  public getStreamsByGroupID(
+    gid: string,
+    observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<Array<Stream>>;
   public getStreamsByGroupID(
     gid: string,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Array<Stream>>>;
   public getStreamsByGroupID(
     gid: string,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<Array<Stream>>>;
-  public getStreamsByGroupID(gid: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  public getStreamsByGroupID(
+    gid: string,
+    observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress: boolean = false
+  ): Observable<any> {
     if (gid === null || gid === undefined) {
       throw new Error('Required parameter gid was null or undefined when calling getStreamsByGroupID.');
     }
@@ -508,6 +593,7 @@ export class CloudwatchLogsService {
     return this.httpClient.get<Array<Stream>>(
       `${this.hostnameAndServiceBasePath}/groups/${encodeURIComponent(String(gid))}/streams`,
       {
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,
@@ -523,10 +609,30 @@ export class CloudwatchLogsService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public getStreamsByID(sid: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-  public getStreamsByID(sid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-  public getStreamsByID(sid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-  public getStreamsByID(sid: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  public getStreamsByID(
+    sid: string,
+    observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<any>;
+  public getStreamsByID(
+    sid: string,
+    observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<HttpResponse<any>>;
+  public getStreamsByID(
+    sid: string,
+    observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<any>>;
+  public getStreamsByID(
+    sid: string,
+    observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress: boolean = false
+  ): Observable<any> {
     if (sid === null || sid === undefined) {
       throw new Error('Required parameter sid was null or undefined when calling getStreamsByID.');
     }
@@ -544,6 +650,7 @@ export class CloudwatchLogsService {
     const consumes: string[] = [];
 
     return this.httpClient.get<any>(`${this.hostnameAndServiceBasePath}/streams/${encodeURIComponent(String(sid))}`, {
+      responseType: <any>responseType,
       withCredentials: this.configuration.withCredentials,
       headers: headers,
       observe: observe,

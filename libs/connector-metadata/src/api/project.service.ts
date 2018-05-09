@@ -49,14 +49,30 @@ export class ProjectService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public createProject(body: NewProject, observe?: 'body', reportProgress?: boolean): Observable<Project>;
+  public createProject(
+    body: NewProject,
+    observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<Project>;
   public createProject(
     body: NewProject,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Project>>;
-  public createProject(body: NewProject, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Project>>;
-  public createProject(body: NewProject, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  public createProject(
+    body: NewProject,
+    observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<Project>>;
+  public createProject(
+    body: NewProject,
+    observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress: boolean = false
+  ): Observable<any> {
     if (body === null || body === undefined) {
       throw new Error('Required parameter body was null or undefined when calling createProject.');
     }
@@ -78,6 +94,7 @@ export class ProjectService {
     }
 
     return this.httpClient.post<Project>(`${this.hostnameAndServiceBasePath}/projects`, body, {
+      responseType: <any>responseType,
       withCredentials: this.configuration.withCredentials,
       headers: headers,
       observe: observe,
@@ -92,10 +109,30 @@ export class ProjectService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public getProjectById(id: string, observe?: 'body', reportProgress?: boolean): Observable<Project>;
-  public getProjectById(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Project>>;
-  public getProjectById(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Project>>;
-  public getProjectById(id: string, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  public getProjectById(
+    id: string,
+    observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<Project>;
+  public getProjectById(
+    id: string,
+    observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<HttpResponse<Project>>;
+  public getProjectById(
+    id: string,
+    observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<Project>>;
+  public getProjectById(
+    id: string,
+    observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress: boolean = false
+  ): Observable<any> {
     if (id === null || id === undefined) {
       throw new Error('Required parameter id was null or undefined when calling getProjectById.');
     }
@@ -115,6 +152,7 @@ export class ProjectService {
     return this.httpClient.get<Project>(
       `${this.hostnameAndServiceBasePath}/projects/${encodeURIComponent(String(id))}`,
       {
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,
@@ -129,10 +167,26 @@ export class ProjectService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public getProjects(observe?: 'body', reportProgress?: boolean): Observable<Array<Project>>;
-  public getProjects(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Project>>>;
-  public getProjects(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Project>>>;
-  public getProjects(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  public getProjects(
+    observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<Array<Project>>;
+  public getProjects(
+    observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<HttpResponse<Array<Project>>>;
+  public getProjects(
+    observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<Array<Project>>>;
+  public getProjects(
+    observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress: boolean = false
+  ): Observable<any> {
     let headers = this.defaultHeaders;
 
     // to determine the Accept header
@@ -146,6 +200,7 @@ export class ProjectService {
     const consumes: string[] = [];
 
     return this.httpClient.get<Array<Project>>(`${this.hostnameAndServiceBasePath}/projects`, {
+      responseType: <any>responseType,
       withCredentials: this.configuration.withCredentials,
       headers: headers,
       observe: observe,
@@ -161,23 +216,32 @@ export class ProjectService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public updateProject(id: string, body: Project, observe?: 'body', reportProgress?: boolean): Observable<Project>;
+  public updateProject(
+    id: string,
+    body: Project,
+    observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<Project>;
   public updateProject(
     id: string,
     body: Project,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Project>>;
   public updateProject(
     id: string,
     body: Project,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<Project>>;
   public updateProject(
     id: string,
     body: Project,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (id === null || id === undefined) {
@@ -207,6 +271,7 @@ export class ProjectService {
       `${this.hostnameAndServiceBasePath}/projects/${encodeURIComponent(String(id))}`,
       body,
       {
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,

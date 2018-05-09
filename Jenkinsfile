@@ -84,7 +84,7 @@ node('master') {
 
           parallel(
               "buid-cme-ui": {
-                sh "ssh jenkins.consort-it.de 'docker run --env-file aws.env ${DOCKER_IMAGE} bash -c \"npm run build:prod && aws --version && aws s3 cp dist/apps/cme-ui s3://cme-ui.dev.consort-it.de --region eu-central-1 --recursive --acl public-read\"'"
+                sh "ssh jenkins.consort-it.de 'docker run --env-file aws.env ${DOCKER_IMAGE} bash -c \"npm run updateBuild -- ${BUILD_NUMBER} && npm run build:prod && aws --version && aws s3 rm s3://cme-ui.dev.consort-it.de --recursive --region eu-central-1 && aws s3 cp dist/apps/cme-ui s3://cme-ui.dev.consort-it.de --region eu-central-1 --recursive --acl public-read && aws s3 cp dist/apps/cme-ui/index.html s3://cme-ui.dev.consort-it.de --region eu-central-1 --cache-control max-age=60 --acl public-read\"'"
               },
               "build-showcase": {
                 sh "ssh jenkins.consort-it.de 'docker run ${DOCKER_IMAGE} npm run build-showcase:prod'"

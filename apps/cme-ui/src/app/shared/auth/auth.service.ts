@@ -175,7 +175,7 @@ export class AuthService {
         err => {
           this.session = null;
           this.log.warn(`Session expired.`, err);
-          resolve('expired token');
+          reject('expired token');
         }
       );
     });

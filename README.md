@@ -23,28 +23,59 @@ Every app/library may depend on `logging` and `i18n`.
 `showcase` project is omitted in this diagram for clearness. It may depend on anything the `cme-ui` depends.
 
 ```mermaid
-graph TD;
-    logging;
-    i18n;
+  graph TD;
 
-    cme-ui-->core-services;
+  logging;
+  i18n;
+  rxjs-utils;
+  shared;
+  testing;
 
-    cme-ui-. lazy .->solution-view;
-    cme-ui-->shared;
-    cme-ui-. lazy .->someother-future-view;
 
-    core-services-->connector-kubernetes;
-    core-services-->connector-metadata;
-    core-services-->connector-base;
 
-    connector-kubernetes-->connector-base;
-    connector-metadata-->connector-base;
+  cost-view;
+  quality-view;
+  solution-view;
+  someother-future-view;
 
-    solution-view-->core-services;
-    solution-view-->shared;
 
-    someother-future-view-->core-services;
-    someother-future-view-->shared;
+
+  core-services;
+  connector-kubernetes;
+  connector-metadata;
+
+
+  cme-ui-->core-services;
+  cme-ui-. lazy .->solution-view;
+  cme-ui-. lazy .->quality-view;
+  cme-ui-. lazy .->cost-view;
+  cme-ui-. lazy .->someother-future-view;
+
+  core-services-->connector-kubernetes;
+  core-services-->connector-metadata;
+
+  connector-kubernetes-->connector-base;
+  connector-metadata-->connector-base;
+  connector-aws-costs-->connector-base;
+  connector-cloudwatch-logs-->connector-base;
+  connector-feature-toggle-service-->connector-base;
+  connector-gitlab-->connector-base;
+  connector-jira-->connector-base;
+  connector-quality-->connector-base;
+
+  solution-view-->core-services;
+  solution-view-->connector-cloudwatch-logs;
+  solution-view-->connector-feature-toggle-service;
+  solution-view-->connector-gitlab;
+  solution-view-->connector-jira;
+
+  cost-view-->connector-aws-costs;
+  cost-view-->core-services;
+
+  quality-view-->core-services
+  quality-view-->connector-quality;
+
+  someother-future-view-->core-services;
 ```
 
 To view an always up-to-date dependency graph, use command `npm run dep-graph`.
@@ -72,9 +103,7 @@ To create a new _view_ do the follwing:
 
 6.  Add the menu entry to `navigation.component.ts` (this should be automated some time in the future)
 
-7.  For translation create `en.json` and `de.json` somewhere in the src folder of the new module library, e.g. in a subfolder called `i18n`. Content should be `{}` for both, otherwise we'll get errors later when extracting translation keys
-
-8.  To be able to directly import the json files, we need to define a dynamic module, so that TypeScript knows what's going on. We do this by creating a `typings.d.ts` file in the lib's src folder with this content:
+7.  To be able to directly import the json files, we need to define a dynamic module, so that TypeScript knows what's going on. We do this by creating a `typings.d.ts` file in the lib's src folder with this content:
 
     ```typescript
     declare module '*.json' {
@@ -83,7 +112,7 @@ To create a new _view_ do the follwing:
     }
     ```
 
-9.  In the lib's root module import `I18nModule.forChild()` and add the content of those translation json files as arguments:
+8.  In the lib's root module import `I18nModule.forChild()` and add the content of those translation json files as arguments:
 
     ```typescript
     import * as translationsDe from './i18n/de.json';
@@ -100,13 +129,13 @@ To create a new _view_ do the follwing:
 
     Don't forget to export the imported json translations, otherwise translation will not work in production builds!
 
-10. Import `I18nModule` in the entry component's module and add a translatable title to the `cme-view-container`, like `[title]="'my-new-view.title' | translate"`
+9.  Import `I18nModule` in the entry component's module and add a translatable title to the `cme-view-container`, like `[title]="'my-new-view.title' | translate"`
 
-11. Add an `extract-translations:my-new-view` npm script. Also call this new script from within the `extract-translations` script
+10. For translations, create a subfolder somewhere in the src folder of the new module library, e.g. called `i18n`. Extend the `extractTranslations.sh` to extract the tranlation key of the new lib into the `i18n` folder (copy/paste, but don't forget to change the folders).
 
-12. Run the `extract-translations` script and add the tranlation values to the newly created keys in the main app's language json files and the new view's language json files
+11. Run the `extract-translations` script and add the translation values to the newly created keys in the main app's language json files and the new view's language json files
 
-13. Add the translation key and value for the navigation entry to the language json files of the main app:
+12. Add the translation key and value for the navigation entry to the language json files of the main app:
     ```json
     "my-new-view": {
       "menu-entry": "My New View"
@@ -135,6 +164,23 @@ The easiest way to add new translations is to first add it to the template where
 Run `npm run extract-translations` to extract the translation keys. They will be added to the correct `{en,de}.json` files depending on whether the translation key was added to the main app or a _view_ (views are responsible for setting up their language files and add an appropriate script). You should always git commit before doing so, to easily see the changes.
 
 `ngx-translate-extract` is used under the hood. It won't find all translation keys, especially if hidden in some bindings, but hopefully it helps. Be aware, that unused keys are not deleted. There is an option for this (`--clean`) but it's way too zealous.
+
+##### Extracting translations in TypeScript Code
+
+If you use translation keys in the TypeScript code file instead of the template you can use a marker function to
+mark strings for translation extraction. See
+https://github.com/biesbjerg/ngx-translate-extract#mark-strings-for-extraction-using-a-marker-function
+
+Unfortunately the provided function `_()` from ngx-translate-extract package rises some issues during compilation.
+That's why we have re-implemented our own function `_()` in library `@cme2/i18n`.
+
+Example of how to mark a string in TypeScript code to be a translation key:
+
+```
+import { _ } from '@cme2/i18n';
+
+const thisIsATranslationKey: string = _('category.component.whatever.Key1');
+```
 
 ### REST Clients
 

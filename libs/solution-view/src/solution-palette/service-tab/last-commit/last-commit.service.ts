@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GeneralMetadata, GitLabBackendService } from '@cme2/connector-gitlab';
+import { CommitMetadata, GitLabBackendService } from '@cme2/connector-gitlab';
 import { normalizeServiceName } from '@cme2/rxjs-utils';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
@@ -9,13 +9,14 @@ import { switchMap } from 'rxjs/operators/switchMap';
 
 import { SolutionPaletteService } from '../../../shared';
 import { Commit } from './commit';
+import { tap } from 'rxjs/operators';
 
-const backendMetadataObjects2Commits = (backendMetadataObjects: Array<GeneralMetadata>): Array<Commit> =>
+const backendMetadataObjects2Commits = (backendMetadataObjects: Array<CommitMetadata>): Array<Commit> =>
   backendMetadataObjects.map(metadata => ({
-    id: (metadata as any)['short_id'] || '',
-    message: metadata.message || '',
-    committer: (metadata as any)['committer_name'] || '',
-    date: new Date((metadata as any)['authored_date'] || '')
+    id: metadata.shortId,
+    message: metadata.message,
+    committer: metadata.committerName,
+    date: metadata.authoredDate
   }));
 
 @Injectable()

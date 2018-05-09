@@ -1,0 +1,83 @@
+@import './../../../solution-view';
+
+:host {
+  display: block;
+}
+
+.context-grid {
+  display: grid;
+  grid-template:
+    'svg svg svg'
+    'endpoints scopes dependencies'
+    'workers persistence empty';
+  grid-gap: 1rem;
+}
+
+.context-diagram {
+  grid-area: svg;
+}
+
+.endpoints {
+  grid-area: endpoints;
+}
+
+.scopes {
+  grid-area: scopes;
+}
+
+.dependencies {
+  grid-area: dependencies;
+}
+
+.workers {
+  grid-area: workers;
+}
+
+.persistence {
+  grid-area: persistence;
+}
+
+.context-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.context-details__heading {
+  display: flex;
+  color: mat-color($consort-blue, 400);
+  font-weight: 600;
+  height: 3rem;
+  line-height: 3rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  & mat-icon {
+    font-size: 1.5rem;
+    width: 1.5rem;
+    height: 3rem;
+    line-height: 3rem;
+    vertical-align: top;
+    margin-right: 0.5rem;
+  }
+}
+
+.heading__text {
+  flex-grow: 1;
+}
+
+.heading__button-icon {
+  cursor: pointer;
+}
+
+.context-details__items {
+  flex-grow: 1;
+  border: 1px solid mat-color($consort-grey, 200);
+}
+
+.context-details__item {
+  padding: 0.35rem 2rem;
+}
+
+.context-details__item:nth-of-type(odd) {
+  background-color: mat-color($consort-grey, 200);
+}

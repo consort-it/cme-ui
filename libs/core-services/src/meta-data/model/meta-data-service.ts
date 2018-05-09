@@ -9,4 +9,14 @@ export interface MetadataService {
   icon?: string;
   serviceType: MetadataServiceType;
   url?: string;
+
+  messageQueue?: string;
+  /**
+   * Other microservice to whom content is provided
+   */
+  dependencies?: string;
+  /**
+   * Name of the persisten storage where data is collected from
+   */
+  persistence?: string;
 }

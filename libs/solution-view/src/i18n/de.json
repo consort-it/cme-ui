@@ -15,6 +15,12 @@
     "validation error url": "Bitte eine gültige URL angeben."
   },
   "palette": {
+    "feature-toggles": {
+      "Loading Error": "Fehler beim Laden der Daten",
+      "No Feature toggles":
+        "Keine Feature Toggles vorhanden. Füge dem Rootverzeichnis des Projekts eine feature-toggles.yaml Datei hinzu um sie verfügbar zu machen.",
+      "Retrieving": "Lädt..."
+    },
     "last-commits": {
       "Last Commits": "Letzte Commits:",
       "timestamp-format": "dd.MM.yy HH:mm:ss"
@@ -40,8 +46,19 @@
       "edit button tooltip": "Microservice {{name}} editieren",
       "expansion-title": {
         "Code-Repo": "Code-Repo",
+        "Feature Toggles": "Feature Toggles",
         "Logs": "Logs",
         "Open Tickets": "Offene Tickets"
+      },
+      "service-context": {
+        "Cancel": "Abbrechen",
+        "Dependencies": "Abhängigkeiten",
+        "Message Queues": "Message Queues",
+        "Persistence": "Persistenz",
+        "Save": "Speichern",
+        "edit-list-modal": {
+          "New entry": "Neuer Eintrag..."
+        }
       },
       "toolbar infotext": "Neuen Microservice erzeugen oder einen bestehenden ändern oder löschen"
     },

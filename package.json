@@ -1,13 +1,13 @@
 {
   "name": "cme2",
   "version": "0.0.1",
-  "license": "none",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "showcase": "ng serve --app=showcase --port=4201",
     "build": "ng build",
-    "build:prod": "ng build --prod",
+    "build:prod": "ng build --prod --namedChunks --subresource-integrity --output-hashing=all",
     "build-showcase:prod": "ng build --prod --app=showcase",
     "test": "ng test",
     "test:coverage": "ng test --single-run --watch=false --cc",
@@ -29,16 +29,13 @@
     "compodoc": "./node_modules/.bin/compodoc -p tsconfig.json -n \"CME Workbench 2 documentation\" -d compodoc --disablePrivate",
     "generate-rest-clients": "bash ./generators/swagger/generateRestClients.sh",
     "postgenerate-rest-clients": "npm run format",
-    "extract-translations:main": "ngx-translate-extract --input ./apps/cme-ui/src ./libs/shared/src --output ./libs/i18n/src/assets/*.json --sort --format namespaced-json",
-    "extract-translations:solution-view": "ngx-translate-extract --input ./libs/solution-view/src --output ./libs/solution-view/src/i18n/x.json --sort --format namespaced-json",
-    "extract-translations:cost-view": "ngx-translate-extract --input ./libs/cost-view/src --output ./libs/cost-view/src/i18n/*.json --sort --format namespaced-json",
-    "extract-translations:quality-view": "ngx-translate-extract --input ./libs/quality-view/src --output ./libs/quality-view/src/i18n/*.json --sort --format namespaced-json",
-    "extract-translations": "npm run extract-translations:main && npm run extract-translations:solution-view && npm run extract-translations:cost-view",
+    "extract-translations": "bash ./generators/translations/extractTranslations.sh",
     "sonar": "./node_modules/.bin/sonar-scanner -Dsonar.host.url=https://cme.dev.k8s.consort-it.de/sonar/ -Dsonar.login=<token>",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "affected:dep-graph": "./node_modules/.bin/nx affected:dep-graph",
     "workspace-schematic": "./node_modules/.bin/nx workspace-schematic",
-    "help": "./node_modules/.bin/nx help"
+    "help": "./node_modules/.bin/nx help",
+    "updateBuild": "node ./generators/build-number/replace.build.js"
   },
   "private": true,
   "dependencies": {
@@ -94,6 +91,7 @@
     "nodemon": "^1.17.3",
     "prettier": "^1.12.1",
     "protractor": "~5.1.2",
+    "replace-in-file": "^3.4.0",
     "semantic-release": "^15.1.8",
     "sonarqube-scanner": "^2.0.2",
     "ts-mockito": "^2.3.0",

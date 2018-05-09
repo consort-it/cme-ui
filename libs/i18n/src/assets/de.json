@@ -22,6 +22,9 @@
   "cost-view": {
     "menu-entry": "Kosten"
   },
+  "domain-model-view": {
+    "menu-entry": "Domain Model"
+  },
   "footer": {
     "select environment": "Wähle Umgebung",
     "select language": "Wähle Sprache",

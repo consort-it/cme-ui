@@ -1,0 +1,19 @@
+@import './../../../solution-view';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.toggle-container {
+  margin-top: 1rem;
+}
+
+.description {
+  color: mat-color($consort-grey, 900);
+}
+
+.error-message {
+  color: red;
+}

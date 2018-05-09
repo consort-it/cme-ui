@@ -42,6 +42,12 @@ const routes: Routes = [
             canActivate: [MetadataGuard]
           },
           {
+            path: 'domain-model',
+            loadChildren: '@cme2/domain-model-view#DomainModelViewModule',
+            data: { shouldShowInPresentationMode: true, pageName: 'domain-model' },
+            canActivate: [MetadataGuard]
+          },
+          {
             path: 'cost',
             loadChildren: '@cme2/cost-view#CostViewModule',
             data: { shouldShowInPresentationMode: true, pageName: 'cost' },

@@ -1,0 +1,76 @@
+$context-diagram-size: 50rem;
+
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.context-diagram {
+    max-width: $context-diagram-size;
+    max-height: $context-diagram-size;
+    flex-shrink: 1;
+    flex-grow: 1;
+    flex-basis: $context-diagram-size;
+  }
+
+.context-diagram--noEndpoints #noEndpoints {
+    display: block;
+  }
+
+.context-diagram--hasEndpoints #hasEndpoints {
+    display: block;
+  }
+
+.context-diagram--noScopes #noScopes {
+    display: block;
+  }
+
+.context-diagram--hasScopes #hasScopes {
+    display: block;
+  }
+
+.context-diagram--addWorkers #addWorkers {
+    display: block;
+  }
+
+.context-diagram--hasWorkers #hasWorkers {
+    display: block;
+  }
+
+.context-diagram--addDependencies #addDependencies {
+    display: block;
+  }
+
+.context-diagram--hasDependencies #hasDependencies {
+    display: block;
+  }
+
+.context-diagram--addPersistence #addPersistence {
+    display: block;
+  }
+
+.context-diagram--hasPersistence #hasPersistence {
+    display: block;
+  }
+
+.context-diagram--noKPIs #noKPIs {
+    display: block;
+  }
+
+.context-diagram--hasKPIs #hasKPIs {
+  display: block;
+}
+
+.context-diagram--noFeatureToggles #noFeatureToggles {
+    display: block;
+  }
+
+
+  .context-diagram--hasFeatureToggles #hasFeatureToggles {
+    display: block;
+  }

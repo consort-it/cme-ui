@@ -1,0 +1,20 @@
+<ng-container *ngIf="loading$ | async">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-container>
+<ng-container *ngIf="(openBugs$ | async) as bugs; else noInfo">
+  <ng-container *ngIf="!(loading$ | async)">
+    <div class="list-item-container" *ngFor="let bug of bugs" (click)="onBugClick(bug)">
+      <div matLine class="list-item">
+        <span class="list-item__key">{{bug.key}}</span>
+        <span class="list-item__title" title="{{bug.title}}">{{bug.title}}</span>
+        <span class="list-item__status">{{bug.status}}</span>
+      </div>
+      <div matLine>
+        <span class="list-item__date">{{bug.updated | date: 'short'}}</span>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+<ng-template #noInfo>
+  <span *ngIf="!(loading$ | async)" class="no-info">{{'quality-view.open-bugs.No bugs info' | translate }}There are no open bugs for this solution</span>
+</ng-template>

@@ -1,3 +1,4 @@
+export * from './config';
 export * from './errorResponse';
 export * from './namespace';
 export * from './pod';

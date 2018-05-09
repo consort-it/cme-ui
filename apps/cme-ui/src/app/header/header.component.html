@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="header mat-elevation-z3">
 
-  <div class="header__left" (click)="onHornetClick()">
+  <div class="header__left" (click)="onHornetClick()" [matTooltip]="version" matTooltipPosition="right">
     <img class="header__logo" src="../../assets/cme_hornet_logo_small.svg" alt="cme-hornet">
   </div>
 

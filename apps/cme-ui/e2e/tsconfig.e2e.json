@@ -19,6 +19,8 @@
     , "../../../libs/cost-view/index.ts"
 
     , "../../../libs/quality-view/index.ts"
+
+    , "../../../libs/domain-model-view/index.ts"
 ],
   "exclude": [
     "**/*.spec.ts"

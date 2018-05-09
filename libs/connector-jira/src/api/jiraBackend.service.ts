@@ -53,24 +53,28 @@ export class JiraBackendService {
     tag: string,
     status?: string,
     observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<Array<JiraIssue>>;
   public getIssues(
     tag: string,
     status?: string,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Array<JiraIssue>>>;
   public getIssues(
     tag: string,
     status?: string,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<Array<JiraIssue>>>;
   public getIssues(
     tag: string,
     status?: string,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (tag === null || tag === undefined) {
@@ -99,6 +103,7 @@ export class JiraBackendService {
 
     return this.httpClient.get<Array<JiraIssue>>(`${this.hostnameAndServiceBasePath}/issues`, {
       params: queryParameters,
+      responseType: <any>responseType,
       withCredentials: this.configuration.withCredentials,
       headers: headers,
       observe: observe,

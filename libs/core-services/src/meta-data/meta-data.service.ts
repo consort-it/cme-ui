@@ -146,6 +146,32 @@ export class MetaDataService {
     return this.updateProject(this._currentProject.id, tempProject).pipe(first());
   }
 
+  public updateService(updatedService: MetadataService): Observable<MetadataProject> {
+    if (!this._currentProject) {
+      throw new Error(`Cannot update service '${updatedService.name}' because current project is not initialized.`);
+    }
+
+    const tempProject = { ...this._currentProject };
+    tempProject.phases = [...tempProject.phases]; //NOSONAR
+
+    let foundService = false;
+    tempProject.phases.forEach(phase => {
+      const idx = phase.services.findIndex(x => x.name === updatedService.name);
+      if (idx > -1) {
+        phase.services.splice(idx, 1, updatedService);
+        foundService = true;
+      }
+    });
+
+    if (!foundService) {
+      throw new Error(
+        `Could not find service mit name '${updatedService.name}' in current project '${this._currentProject.name}'`
+      );
+    }
+
+    return this.updateProject(this._currentProject.id, tempProject).pipe(first());
+  }
+
   private mapBackendProject2Project(backendProject: BackendProject): MetadataProject {
     return <MetadataProject>{
       ...backendProject

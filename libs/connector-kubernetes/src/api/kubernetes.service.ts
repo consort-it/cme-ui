@@ -49,10 +49,26 @@ export class KubernetesService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public getNamespaces(observe?: 'body', reportProgress?: boolean): Observable<Array<Namespace>>;
-  public getNamespaces(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Namespace>>>;
-  public getNamespaces(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Namespace>>>;
-  public getNamespaces(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  public getNamespaces(
+    observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<Array<Namespace>>;
+  public getNamespaces(
+    observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<HttpResponse<Array<Namespace>>>;
+  public getNamespaces(
+    observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<Array<Namespace>>>;
+  public getNamespaces(
+    observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
+    reportProgress: boolean = false
+  ): Observable<any> {
     let headers = this.defaultHeaders;
 
     // to determine the Accept header
@@ -66,6 +82,7 @@ export class KubernetesService {
     const consumes: string[] = [];
 
     return this.httpClient.get<Array<Namespace>>(`${this.hostnameAndServiceBasePath}/namespaces`, {
+      responseType: <any>responseType,
       withCredentials: this.configuration.withCredentials,
       headers: headers,
       observe: observe,
@@ -85,24 +102,28 @@ export class KubernetesService {
     namespaceId: string,
     servicename: string,
     observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<Array<Pod>>;
   public getPodsByService(
     namespaceId: string,
     servicename: string,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Array<Pod>>>;
   public getPodsByService(
     namespaceId: string,
     servicename: string,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<Array<Pod>>>;
   public getPodsByService(
     namespaceId: string,
     servicename: string,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (namespaceId === null || namespaceId === undefined) {
@@ -129,6 +150,7 @@ export class KubernetesService {
         String(namespaceId)
       )}/services/${encodeURIComponent(String(servicename))}/pods`,
       {
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,
@@ -149,24 +171,28 @@ export class KubernetesService {
     namespaceId: string,
     servicename: string,
     observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<Service>;
   public getService(
     namespaceId: string,
     servicename: string,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Service>>;
   public getService(
     namespaceId: string,
     servicename: string,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<Service>>;
   public getService(
     namespaceId: string,
     servicename: string,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (namespaceId === null || namespaceId === undefined) {
@@ -193,6 +219,7 @@ export class KubernetesService {
         String(namespaceId)
       )}/services/${encodeURIComponent(String(servicename))}`,
       {
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,
@@ -213,24 +240,28 @@ export class KubernetesService {
     namespaceId: string,
     listServiceNames?: Array<string>,
     observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<Array<Service>>;
   public getServices(
     namespaceId: string,
     listServiceNames?: Array<string>,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Array<Service>>>;
   public getServices(
     namespaceId: string,
     listServiceNames?: Array<string>,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<Array<Service>>>;
   public getServices(
     namespaceId: string,
     listServiceNames?: Array<string>,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (namespaceId === null || namespaceId === undefined) {
@@ -258,6 +289,7 @@ export class KubernetesService {
       `${this.hostnameAndServiceBasePath}/namespaces/${encodeURIComponent(String(namespaceId))}/services`,
       {
         params: queryParameters,
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,

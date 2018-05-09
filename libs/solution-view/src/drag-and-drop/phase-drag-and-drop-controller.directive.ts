@@ -83,6 +83,6 @@ export class PhaseDragAndDropControllerDirective {
 
   private hasPhaseDragAndDropAttribute(element: HTMLElement): boolean {
     const attr = element.getAttribute(PHASE_DRAG_AND_DROP);
-    return attr === 'true' ? true : false;
+    return attr === 'true';
   }
 }

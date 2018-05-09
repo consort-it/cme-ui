@@ -1,2 +1,2 @@
 export * from './dashboard.model';
-export * from './quality-dashboard.component';
+export * from './quality-dashboard.module';

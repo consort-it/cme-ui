@@ -1,5 +1,11 @@
 {
   "quality-view": {
+    "failed-build": {
+      "No build info": "Keine Build Informationen vorhanden"
+    },
+    "open-bugs": {
+      "No bugs info": "Keine Bugs gefunden"
+    },
     "quality-card": {
       "Code Quality": {
         "description": "Ergebnisse von SonarQube (statische Codeanalyse)",
@@ -33,7 +39,7 @@
         "description": "Cucumber Tests",
         "title": "Smoke Tests"
       },
-      "Vulnarabilities": {
+      "Vulnerabilities": {
         "description": "Befunde des OWASP Scans",
         "title": "Sicherheitslücken"
       }

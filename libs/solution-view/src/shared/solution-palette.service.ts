@@ -25,7 +25,6 @@ export class SolutionPaletteService {
 
   private phaseSelection$$ = new BehaviorSubject<SelectedPhase>(undefined);
   public readonly phaseSelection$: Observable<SelectedPhase>;
-  public readonly phaseNameSelection$: Observable<SelectedPhaseName>;
 
   private tabSelection$$ = new BehaviorSubject<SelectedPaletteTab>(SelectedPaletteTab.Project);
   public readonly tabSelection$: Observable<SelectedPaletteTab>;
@@ -39,15 +38,6 @@ export class SolutionPaletteService {
       map(service => {
         if (service) {
           return service.name;
-        }
-        return undefined;
-      })
-    );
-
-    this.phaseNameSelection$ = this.microserviceSelection$$.asObservable().pipe(
-      map(phase => {
-        if (phase) {
-          return phase.name;
         }
         return undefined;
       })

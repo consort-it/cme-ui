@@ -1,0 +1,17 @@
+<ng-container *ngIf="featureToggleService.fetching$ | async">
+    <mat-progress-bar [mode]="'indeterminate'"></mat-progress-bar>
+    <p>{{'palette.feature-toggles.Retrieving' | translate}}</p>
+</ng-container>
+<ng-container *ngIf="(featureToggleService.fetching$ | async) || (featureToggleService.featureToggles$ | async)?.length > 0; else noResults">
+    <div class="toggle-container" *ngFor="let toggle of featureToggleService.featureToggles$ | async">
+        <mat-slide-toggle [checked]="toggle.toggleValue" (change)="onToggle($event, toggle)">
+            {{ toggle.toggleName }}
+        </mat-slide-toggle>
+        <div class="description">{{ toggle.featureDescription }}</div>
+    </div>
+</ng-container>
+
+<ng-template #noResults>
+    <p *ngIf="!!(featureToggleService.error$ | async)" class="error-message">{{ 'palette.feature-toggles.Loading Error' | translate }}: {{(featureToggleService.error$ | async)}}</p>
+    <p *ngIf="!(featureToggleService.error$ | async)">{{'palette.feature-toggles.No Feature toggles' | translate}}</p>
+</ng-template>

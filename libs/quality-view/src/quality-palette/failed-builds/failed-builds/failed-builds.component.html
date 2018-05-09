@@ -1,0 +1,17 @@
+<ng-container *ngIf="(details$ | async) as details; else noInfo">
+  <mat-list>
+    <mat-list-item *ngFor="let detail of details">
+      <mat-icon matListIcon [style.color]="getColor(detail.status)">{{getIconName(detail.status)}}</mat-icon>
+      <h3 matLine> {{detail.serviceName}} </h3>
+      <p matLine>
+        <span>
+          <a *ngIf="detail.ref; else noHref" [href]="detail.ref" target="_blank">{{detail.status}}</a>
+          <ng-template #noHref>{{detail.status}}</ng-template>
+        </span>
+      </p>
+    </mat-list-item>
+  </mat-list>
+</ng-container>
+<ng-template #noInfo>
+  <span class="no-info">{{'quality-view.failed-build.No build info' | translate }}</span>
+</ng-template>

@@ -1,2 +1,2 @@
+export * from './commitMetadata';
 export * from './errorResponse';
-export * from './generalMetadata';

@@ -1,15 +1,21 @@
+<h3>cme-failed-builds-bar-chart</h3>
+
+<cme-failed-builds-bar-chart></cme-failed-builds-bar-chart>
+
+
+
+
+<h3>cme-quality-card</h3>
+
 <mat-slider [(ngModel)]="healthIndex1">
 </mat-slider>
 <cme-quality-card [title]="'Failing Builds'" [description]="'Recently failing builds on Jenkins'">
 
-    <cme-icon-with-indicator [healthIndex]="healthIndex1" [iconName]="'shield.svg'" [indicatorLeft]="{ value: '5', tooltip: ''}"
-        [indicatorRight]="{ value: '9', tooltip: 'Rechter Böbbel'}"></cme-icon-with-indicator>
+    <cme-icon-with-indicator [healthIndex]="healthIndex1" [iconName]="'shield.svg'" [indicatorCount]="indicatorCount1" [indicatorTooltip]="'Rechter Böbbel'"></cme-icon-with-indicator>
 </cme-quality-card>
 
-
 <cme-quality-card [title]="'Code Quality'" [description]="'SonarQube findings on your code'">
-    <cme-icon-with-indicator [healthIndex]="healthIndex3" [iconName]="'bug.svg'" [indicatorLeft]="{ value: '3', tooltip: 'Issues found'}"
-        [indicatorRight]="{ value: '7', tooltip: 'Bugs found'}"></cme-icon-with-indicator>
+    <cme-icon-with-indicator [healthIndex]="healthIndex3" [iconName]="'bug.svg'" [indicatorCount]="indicatorCount2" [indicatorTooltip]="'Bugs found'"></cme-icon-with-indicator>
 </cme-quality-card>
 
 <cme-quality-card [title]="'test-service'" [description]="'Overall solution quality status'">

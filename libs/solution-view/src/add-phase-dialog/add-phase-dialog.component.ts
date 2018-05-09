@@ -31,7 +31,7 @@ export class AddPhaseDialogComponent implements OnInit {
       const newPhase = { name: newPhaseName, services: [] };
 
       const tempProject = { ...this.currentProject };
-      tempProject.phases = [...tempProject.phases];
+      tempProject.phases = [...tempProject.phases]; // NOSONAR
       tempProject.phases.push(newPhase);
 
       this.metadataService.updateProject(this.currentProject.id, tempProject).subscribe(

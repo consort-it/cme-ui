@@ -7,7 +7,7 @@ import { Subject } from 'rxjs/Subject';
 import { merge } from 'rxjs/observable/merge';
 import { of } from 'rxjs/observable/of';
 import { timer } from 'rxjs/observable/timer';
-import { catchError, delay, filter, map, shareReplay, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { catchError, delay, filter, map, shareReplay, switchMap, takeUntil } from 'rxjs/operators';
 import { DashboardModel } from '../quality-dashboard';
 
 const REFRESH_INTERVAL = 60000;
@@ -115,7 +115,9 @@ export class QualityService implements OnDestroy {
     return <DashboardModel>{
       healthIndex,
       issueCount: backendModel.issueCount,
-      generatedAt: backendModel.generatedAt
+      generatedAt: backendModel.generatedAt,
+      ref: backendModel.ref,
+      details: backendModel.details
     };
   }
 

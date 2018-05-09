@@ -198,6 +198,24 @@
       ]
     },
     {
+      "name": "connector-domain-model",
+      "root": "libs/connector-domain-model/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": [
+        "view-connector"
+      ]
+    },
+    {
+      "name": "connector-feature-toggle-service",
+      "root": "libs/connector-feature-toggle-service/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": [
+        "view-connector"
+      ]
+    },
+    {
       "name": "connector-gitlab",
       "root": "libs/connector-gitlab/src",
       "test": "../../../test.js",
@@ -254,6 +272,16 @@
     {
       "name": "cost-view",
       "root": "libs/cost-view/src",
+      "test": "../../../test.js",
+      "prefix": "cme",
+      "appRoot": "",
+      "tags": [
+        "view"
+      ]
+    },
+    {
+      "name": "domain-model-view",
+      "root": "libs/domain-model-view/src",
       "test": "../../../test.js",
       "prefix": "cme",
       "appRoot": "",

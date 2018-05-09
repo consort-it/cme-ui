@@ -16,12 +16,22 @@
     <!-- TODO: maybe we could add a wrapper component for the expansion panel -->
 
     <!-- Service -->
-    <mat-expansion-panel class="mat-elevation-z0">
+    <mat-expansion-panel class="mat-elevation-z0" expanded="true">
       <mat-expansion-panel-header>
-        <mat-panel-title>{{ paletteService.phaseNameSelection$ | async }}</mat-panel-title>
+        <mat-panel-title>{{ paletteService.microserviceNameSelection$ | async }}</mat-panel-title>
       </mat-expansion-panel-header>
       <ng-template matExpansionPanelContent>
-        Todo: add some meaningful information about this service here! ¯\_(ツ)_/¯
+        <cme-service-context></cme-service-context>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <!-- Feature Toggles -->
+    <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{'palette.service-tab.expansion-title.Feature Toggles' | translate}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <cme-feature-toggle></cme-feature-toggle>
       </ng-template>
     </mat-expansion-panel>
 

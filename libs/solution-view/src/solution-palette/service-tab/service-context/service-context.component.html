@@ -1,0 +1,62 @@
+<div class="context-grid">
+
+  <cme-context-diagram [hasPersistence]="(persistenceItems | async)?.length > 0" [hasWorkers]="(messageQueueItems | async)?.length > 0"
+    [hasDependencies]="(dependencyItems | async)?.length > 0" [hasScopes]="contextService.hasScopes$ | async" [hasEndpoints]="contextService.hasApiEndpoints$ | async"
+    class="context-diagram" (dependenciesClick)="onDependencyEdit()" (messageQueueClick)="onQueueEdit()" (persistenceClick)="onPersistenceEdit()"></cme-context-diagram>
+
+  <div class="context-details endpoints">
+    <div class="context-details__heading">
+      <mat-icon color="" svgIcon="api"></mat-icon>API Endpoints</div>
+    <div class="context-details__items">
+      <div class="context-details__item">TODO: implement</div>
+    </div>
+  </div>
+
+  <div class="context-details scopes">
+    <div class="context-details__heading">
+      <mat-icon color="" svgIcon="scopes"></mat-icon>Scopes</div>
+    <div class="context-details__items">
+      <div class="context-details__item">TODO: implement</div>
+    </div>
+  </div>
+
+  <div class="context-details dependencies">
+    <div class="context-details__heading">
+      <mat-icon color="" svgIcon="dependencies"></mat-icon>
+      <span class="heading__text">{{'palette.service-tab.service-context.Dependencies' | translate}}</span>
+      <mat-icon class="heading__button-icon" (click)="onDependencyEdit()" color="">mode_edit</mat-icon>
+    </div>
+    <div class="context-details__items">
+      <ng-container *ngFor="let dependencyItem of dependencyItems | async">
+        <div class="context-details__item">{{dependencyItem}}</div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="context-details workers">
+    <div class="context-details__heading">
+      <mat-icon color="" svgIcon="job-workers"></mat-icon>
+      <span class="heading__text">Job Workers</span>
+      <mat-icon class="heading__button-icon" (click)="onQueueEdit()" color="">mode_edit</mat-icon>
+    </div>
+    <div class="context-details__items">
+      <ng-container *ngFor="let messageQueueItem of messageQueueItems | async">
+        <div class="context-details__item">{{messageQueueItem}}</div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="context-details persistence">
+    <div class="context-details__heading">
+      <mat-icon color="" svgIcon="persistence"></mat-icon>
+      <span class="heading__text">Persistence</span>
+      <mat-icon class="heading__button-icon" (click)="onPersistenceEdit()" color="">mode_edit</mat-icon>
+    </div>
+    <div class="context-details__items">
+      <ng-container *ngFor="let persistenceItem of persistenceItems | async">
+        <div class="context-details__item">{{persistenceItem}}</div>
+      </ng-container>
+    </div>
+  </div>
+
+</div>

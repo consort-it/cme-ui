@@ -15,6 +15,8 @@ SOURCE_YAMLS=(
   "git@gitlab.consort-it.de:cme2/jira-adapter HEAD swagger.yaml"
   "git@gitlab.consort-it.de:cme2/quality-adapter HEAD swagger.yaml"
   "git@gitlab.consort-it.de:cme2/gitlab-adapter HEAD swagger.yaml"
+  "git@gitlab.consort-it.de:cme2/feature-toggle-service HEAD swagger.yaml"
+  "git@gitlab.consort-it.de:cme2/domain-model-service HEAD swagger.yaml"
 )
 
 # output folders for generated code, must match SOURCE_YAMLS
@@ -26,6 +28,8 @@ TARGET_LIB_FOLDERS=(
   "../../libs/connector-jira/src/"
   "../../libs/connector-quality/src/"
   "../../libs/connector-gitlab/src/"
+  "../../libs/connector-feature-toggle-service/src/"
+  "../../libs/connector-domain-model/src/"
 )
 
 LEN=${#SOURCE_YAMLS[@]};

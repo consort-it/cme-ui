@@ -1,0 +1,69 @@
+<h1>Showcase</h1>
+
+<h2>Context Diagram</h2>
+<mat-card class="component-showcase context-component-showcase">
+  <cme-context-diagram [hasEndpoints]="hasEndpoints" [hasScopes]="hasScopes" [hasWorkers]="hasWorkers" [hasDependencies]="hasDependencies"
+    [hasPersistence]="hasPersistence" [hasKPIs]="hasKPIs" [hasFeatureToggles]="hasFeatureToggles">
+  </cme-context-diagram>
+  <mat-slide-toggle color="primary" [(ngModel)]="hasEndpoints">Endpoints</mat-slide-toggle>
+  <mat-slide-toggle color="primary" [(ngModel)]="hasScopes">Scopes</mat-slide-toggle>
+  <mat-slide-toggle color="primary" [(ngModel)]="hasWorkers">Workers</mat-slide-toggle>
+  <mat-slide-toggle color="primary" [(ngModel)]="hasDependencies">Dependencies</mat-slide-toggle>
+  <mat-slide-toggle color="primary" [(ngModel)]="hasPersistence">Persistence</mat-slide-toggle>
+  <mat-slide-toggle color="primary" [(ngModel)]="hasKPIs">KPIs</mat-slide-toggle>
+  <mat-slide-toggle color="primary" [(ngModel)]="hasFeatureToggles">Feature Toggles</mat-slide-toggle>
+</mat-card>
+
+<h2>SolutionMicroservice</h2>
+<mat-card class="component-showcase view-container-showcase">
+  <cme-solution-microservice-show-case></cme-solution-microservice-show-case>
+</mat-card>
+
+
+<h2>ViewContainer</h2>
+
+<mat-card class="component-showcase view-container-showcase">
+  <cme-view-container [title]="'ViewContainer With Palette'">
+    <div cmeViewContainerContent class="view-container-showcase__content">Scrollable Content</div>
+    <div cmeViewContainerPalette class="view-container-showcase__palette">Scrollable Palette</div>
+  </cme-view-container>
+</mat-card>
+
+
+<h2>PaletteToolbar</h2>
+
+<mat-card class="component-showcase view-container-showcase">
+  <h4>PaletteToolbar with infotext</h4>
+  <cme-palette-toolbar infotext="Create a new something or add, edit or delete an existing something">
+    <cme-palette-toolbar-button icon="add" tooltip="add something"></cme-palette-toolbar-button>
+    <cme-palette-toolbar-button icon="delete" tooltip="delete something"></cme-palette-toolbar-button>
+  </cme-palette-toolbar>
+
+  <br>
+
+  <h4>PaletteToolbar without infotext</h4>
+  <cme-palette-toolbar>
+    <cme-palette-toolbar-button icon="add" tooltip="add something"></cme-palette-toolbar-button>
+    <cme-palette-toolbar-button icon="delete" tooltip="delete something"></cme-palette-toolbar-button>
+  </cme-palette-toolbar>
+</mat-card>
+
+<h2>TeamEditor</h2>
+
+<mat-card class="component-showcase view-container-showcase">
+  <cme-person-edit-show-case>
+  </cme-person-edit-show-case>
+</mat-card>
+
+<h2>TeamOverview</h2>
+
+<mat-card class="component-showcase view-container-showcase">
+  <cme-team-view-show-case>
+  </cme-team-view-show-case>
+</mat-card>
+
+
+<h2>Quality View</h2>
+<mat-card class="component-showcase">
+  <cme-quality-show-case></cme-quality-show-case>
+</mat-card>

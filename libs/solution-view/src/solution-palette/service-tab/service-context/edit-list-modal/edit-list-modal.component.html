@@ -1,0 +1,17 @@
+<h2>{{ titleKey | translate }}</h2>
+
+<mat-form-field class="chip-list">
+  <mat-chip-list #chipList>
+    <mat-chip *ngFor="let value of values" [selectable]="selectable" [removable]="removable" (remove)="remove(value)">
+      {{value}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="{{'palette.service-tab.service-context.edit-list-modal.New entry' | translate }}" [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)"
+    />
+  </mat-chip-list>
+</mat-form-field>
+<div>
+  <button mat-raised-button (click)="onSave()">{{'palette.service-tab.service-context.Save' | translate}}</button>
+  <button mat-raised-button (click)="onCancel()">{{'palette.service-tab.service-context.Cancel' | translate}}</button>
+</div>

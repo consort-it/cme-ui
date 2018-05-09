@@ -1,0 +1,10 @@
+@import '../../quality-view';
+
+:host {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  font-size: 0.75rem;
+  padding-left: 2rem;
+  color: mat-color($consort-grey, 600);
+}

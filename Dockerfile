@@ -1,7 +1,7 @@
 
 # Image contains everything needed for Angular development:
 # Node 8, NPM 5.6.0, Chromium Headless, Selenium Webdriver, etc.
-FROM trion/ng-cli-e2e:1.7.3
+FROM trion/ng-cli-e2e:1.7.4
 
 RUN apt-get update -q
 

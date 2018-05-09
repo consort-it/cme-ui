@@ -1,19 +1,23 @@
 <div class="category__title">
   <h2>{{ 'quality-view.quality-dashboard.Pre-Integration Quality Gate' | translate}}</h2>
 </div>
-<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Failing Builds.title' | translate" [description]="'quality-view.quality-card.Failing Builds.description' | translate">
+<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Failing Builds.title' | translate" [description]="'quality-view.quality-card.Failing Builds.description' | translate"
+  (click)="qualityPalette.openContext({ category: Category.Builds, titleKey: 'quality-view.quality-card.Failing Builds.title'})">
   <cme-icon-with-indicator [healthIndex]="(qualityService.buildQuality$ | async)?.healthIndex" [indicatorCount]="(qualityService.buildQuality$ | async)?.issueCount"
     [iconName]="'cubes.svg'"></cme-icon-with-indicator>
 </cme-quality-card>
-<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Contracts.title' | translate" [description]="'quality-view.quality-card.Contracts.description' | translate">
+<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Contracts.title' | translate" [description]="'quality-view.quality-card.Contracts.description' | translate"
+  (click)="qualityPalette.openContext({ category: Category.Contracts, titleKey: 'quality-view.quality-card.Contracts.title'})">
   <cme-icon-with-indicator [healthIndex]="(qualityService.contractsQuality$ | async)?.healthIndex" [indicatorCount]="(qualityService.contractsQuality$ | async)?.issueCount"
     [iconName]="'handshake-o.svg'"></cme-icon-with-indicator>
 </cme-quality-card>
-<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Code Quality.title' | translate" [description]="'quality-view.quality-card.Code Quality.description' | translate">
+<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Code Quality.title' | translate" [description]="'quality-view.quality-card.Code Quality.description' | translate"
+  (click)="qualityPalette.openContext({ category: Category.CodeQuality, titleKey: 'quality-view.quality-card.Code Quality.title'})">
   <cme-icon-with-indicator [healthIndex]="(qualityService.codeQuality$ | async)?.healthIndex" [indicatorCount]="(qualityService.codeQuality$ | async)?.issueCount"
     [iconName]="'code.svg'"></cme-icon-with-indicator>
 </cme-quality-card>
-<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Vulnarabilities.title' | translate" [description]="'quality-view.quality-card.Vulnarabilities.description' | translate">
+<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Vulnerabilities.title' | translate" [description]="'quality-view.quality-card.Vulnerabilities.description' | translate"
+  (click)="qualityPalette.openContext({ category: Category.Vulnerabilities, titleKey: 'quality-view.quality-card.Vulnerabilities.title'})">
   <cme-icon-with-indicator [healthIndex]="(qualityService.vulnerabilityQuality$ | async)?.healthIndex" [indicatorCount]="(qualityService.vulnerabilityQuality$ | async)?.issueCount"
     [iconName]="'shield.svg'"></cme-icon-with-indicator>
 </cme-quality-card>
@@ -22,19 +26,23 @@
 <div class="category__title">
   <h2>{{ 'quality-view.quality-dashboard.Integration Quality Gate' | translate}}</h2>
 </div>
-<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Open Bugs.title' | translate" [description]="'quality-view.quality-card.Open Bugs.description' | translate">
+<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Open Bugs.title' | translate" [description]="'quality-view.quality-card.Open Bugs.description' | translate"
+  (click)="qualityPalette.openContext({ category: Category.Bugs, titleKey: 'quality-view.quality-card.Open Bugs.title'})">
   <cme-icon-with-indicator [healthIndex]="(qualityService.bugsQuality$ | async)?.healthIndex" [indicatorCount]="(qualityService.bugsQuality$ | async)?.issueCount"
     [iconName]="'bug.svg'"></cme-icon-with-indicator>
 </cme-quality-card>
-<cme-quality-card class="category__card" [title]="'quality-view.quality-card.End to End.title' | translate" [description]="'quality-view.quality-card.End to End.description' | translate">
+<cme-quality-card class="category__card" [title]="'quality-view.quality-card.End to End.title' | translate" [description]="'quality-view.quality-card.End to End.description' | translate"
+  (click)="qualityPalette.openContext({ category: Category.End2End, titleKey: 'quality-view.quality-card.End to End.title'})">
   <cme-icon-with-indicator [healthIndex]="(qualityService.end2EndQuality$ | async)?.healthIndex" [indicatorCount]="(qualityService.end2EndQuality$ | async)?.issueCount"
     [iconName]="'cogs.svg'"></cme-icon-with-indicator>
 </cme-quality-card>
-<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Smoke Tests.title' | translate" [description]="'quality-view.quality-card.Smoke Tests.description' | translate">
+<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Smoke Tests.title' | translate" [description]="'quality-view.quality-card.Smoke Tests.description' | translate"
+  (click)="qualityPalette.openContext({ category: Category.SmokeTests, titleKey: 'quality-view.quality-card.Smoke Tests.title'})">
   <cme-icon-with-indicator [healthIndex]="(qualityService.smokeTestQuality$ | async)?.healthIndex" [indicatorCount]="(qualityService.smokeTestQuality$ | async)?.issueCount"
     [iconName]="'crosshairs.svg'"></cme-icon-with-indicator>
 </cme-quality-card>
-<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Log Errors.title' | translate" [description]="'quality-view.quality-card.Log Errors.description' | translate">
+<cme-quality-card class="category__card" [title]="'quality-view.quality-card.Log Errors.title' | translate" [description]="'quality-view.quality-card.Log Errors.description' | translate"
+  (click)="qualityPalette.openContext({ category: Category.Logs, titleKey: 'quality-view.quality-card.Log Errors.title'})">
   <cme-icon-with-indicator [healthIndex]="(qualityService.logQuality$ | async)?.healthIndex" [indicatorCount]="(qualityService.logQuality$ | async)?.issueCount"
     [iconName]="'book.svg'"></cme-icon-with-indicator>
 </cme-quality-card>

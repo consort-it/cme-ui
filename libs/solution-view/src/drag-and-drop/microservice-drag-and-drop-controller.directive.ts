@@ -206,11 +206,11 @@ export class MicroserviceDragAndDropControllerDirective {
 
   private hasMicroserviceDragAndDropAttribute(element: HTMLElement): boolean {
     const attr = element.getAttribute(MICROSERVICE_DRAG_AND_DROP);
-    return attr === 'true' ? true : false;
+    return attr === 'true';
   }
 
   private usePlaceholderOnDragover(element: HTMLElement): boolean {
     const attr = element.getAttribute(USE_PLACEHOLDER_ON_DRAGOVER);
-    return attr === 'true' ? true : false;
+    return attr === 'true';
   }
 }

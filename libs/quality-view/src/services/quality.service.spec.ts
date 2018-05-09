@@ -67,40 +67,4 @@ describe('QualityService', () => {
       })
     );
   });
-
-  // Does not work when delay operator is used
-  xdescribe('codeQuality$', () => {
-    it(
-      'should emit valid DashboardModel when backend returns a value',
-      fakeAsync(() => {
-        const mockMetaDataService = mock(MetaDataService);
-        when(mockMetaDataService.currentServices$).thenReturn(of(['service1', 'service2']));
-
-        const mockQualityBackendService = mock(QualityBackendService);
-        when(mockQualityBackendService.getQualityStatusForCategory(anything(), anything())).thenReturn(
-          of(<QualityStatus>{
-            generatedAt: new Date(),
-            category: QualityStatus.CategoryEnum.CodeQuality,
-            details: [],
-            status: QualityStatus.StatusEnum.Passed
-          })
-        );
-
-        const sut = new QualityService(
-          new MockLogService(),
-          instance(mockQualityBackendService),
-          instance(mockMetaDataService)
-        );
-
-        let done = false;
-        sut.codeQuality$.pipe(first()).subscribe(x => {
-          expect(x.healthIndex).toEqual(100);
-          done = true;
-        });
-        tick();
-        expect(done).toBeTruthy();
-        discardPeriodicTasks();
-      })
-    );
-  });
 });

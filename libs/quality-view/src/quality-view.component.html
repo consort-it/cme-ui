@@ -1,5 +1,10 @@
-<cme-view-container [title]="'quality-view.title' | translate">
+<cme-view-container [title]="'quality-view.title' | translate" [paletteVisible]="qualityPalette.isOpen$ | async" (paletteVisibleChange)="onPaletteVisibleChange($event)">
   <div cmeViewContainerContent class="content">
     <cme-quality-dashboard></cme-quality-dashboard>
   </div>
+
+
+  <cme-quality-bread-crumbs cmeViewContainerPaletteHeader></cme-quality-bread-crumbs>
+
+  <cme-quality-palette cmeViewContainerPalette></cme-quality-palette>
 </cme-view-container>

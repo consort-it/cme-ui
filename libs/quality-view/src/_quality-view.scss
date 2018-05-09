@@ -1,0 +1,6 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+
+$phase-header-background-color: mat-color($consort-blue, 200);
+$phase-width: 250px;
+$phase-header-height: 50px;

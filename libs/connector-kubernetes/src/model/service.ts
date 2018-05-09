@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Config } from './config';
 
 export interface Service {
   /**
@@ -31,6 +32,10 @@ export interface Service {
    * The number of service instances on kubernetes
    */
   instances: number;
+  /**
+   * Contains an array of config parameters that were applied when this mirkoservice had been deployed to kubernetes.
+   */
+  config?: Array<Config>;
 }
 export namespace Service {
   export type StatusEnum = 'Initializing' | 'Running' | 'Stopped' | 'Broken';

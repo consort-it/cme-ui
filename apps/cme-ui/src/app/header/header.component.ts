@@ -12,6 +12,8 @@ import { Subject } from 'rxjs/Subject';
 import { exhaustMap, mapTo, first, map, take, tap } from 'rxjs/operators';
 import { timer } from 'rxjs/observable/timer';
 
+import { environment } from '../../environments/environment';
+
 const NOTIFICATION_DELAY_BETWEEN_SHAKES = 4000;
 
 @Component({
@@ -21,12 +23,15 @@ const NOTIFICATION_DELAY_BETWEEN_SHAKES = 4000;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
+  public get version(): string {
+    return environment.version === '{BUILD_VERSION}' ? 'Dev Build' : environment.version;
+  }
   public readonly user$: Observable<string> | null | undefined;
   public readonly isAuthenticated$: Observable<boolean>;
 
   private _shakeIt$$ = new Subject<void>();
   public shakeIt$ = this._shakeIt$$.pipe(
-    exhaustMap(() => timer(0, NOTIFICATION_DELAY_BETWEEN_SHAKES).pipe(map(num => (num === 0 ? true : false)), take(2)))
+    exhaustMap(() => timer(0, NOTIFICATION_DELAY_BETWEEN_SHAKES).pipe(map(num => (num === 0 ? true : false)), take(2))) // NOSONAR
   );
 
   private _notificationCount = 0;

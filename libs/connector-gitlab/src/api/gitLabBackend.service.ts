@@ -7,8 +7,8 @@ import { CustomHttpUrlEncodingCodec } from '../encoder';
 import { HostnameService } from '@cme2/connector-base';
 import { Observable } from 'rxjs/Observable';
 
+import { CommitMetadata } from '../model/commitMetadata';
 import { ErrorResponse } from '../model/errorResponse';
-import { GeneralMetadata } from '../model/generalMetadata';
 
 import { COLLECTION_FORMATS } from '../variables';
 import { Configuration } from '../configuration';
@@ -53,24 +53,28 @@ export class GitLabBackendService {
     microserviceName: string,
     filepath: string,
     observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<Blob>;
   public getFileAsRaw(
     microserviceName: string,
     filepath: string,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Blob>>;
   public getFileAsRaw(
     microserviceName: string,
     filepath: string,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<Blob>>;
   public getFileAsRaw(
     microserviceName: string,
     filepath: string,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (microserviceName === null || microserviceName === undefined) {
@@ -118,24 +122,28 @@ export class GitLabBackendService {
     microserviceName: string,
     filepath: string,
     observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<string>;
   public getFileAsString(
     microserviceName: string,
     filepath: string,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<string>>;
   public getFileAsString(
     microserviceName: string,
     filepath: string,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<string>>;
   public getFileAsString(
     microserviceName: string,
     filepath: string,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (microserviceName === null || microserviceName === undefined) {
@@ -162,6 +170,7 @@ export class GitLabBackendService {
         String(microserviceName)
       )}/content-as-string/${encodeURIComponent(String(filepath))}`,
       {
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,
@@ -182,24 +191,28 @@ export class GitLabBackendService {
     microserviceName: string,
     limit?: number,
     observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
-  ): Observable<Array<GeneralMetadata>>;
+  ): Observable<Array<CommitMetadata>>;
   public getMetadata(
     microserviceName: string,
     limit?: number,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
-  ): Observable<HttpResponse<Array<GeneralMetadata>>>;
+  ): Observable<HttpResponse<Array<CommitMetadata>>>;
   public getMetadata(
     microserviceName: string,
     limit?: number,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
-  ): Observable<HttpEvent<Array<GeneralMetadata>>>;
+  ): Observable<HttpEvent<Array<CommitMetadata>>>;
   public getMetadata(
     microserviceName: string,
     limit?: number,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (microserviceName === null || microserviceName === undefined) {
@@ -223,10 +236,11 @@ export class GitLabBackendService {
     // to determine the Content-Type header
     const consumes: string[] = [];
 
-    return this.httpClient.get<Array<GeneralMetadata>>(
+    return this.httpClient.get<Array<CommitMetadata>>(
       `${this.hostnameAndServiceBasePath}/${encodeURIComponent(String(microserviceName))}/metadata`,
       {
         params: queryParameters,
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,
@@ -249,27 +263,31 @@ export class GitLabBackendService {
     filepath: string,
     limit?: number,
     observe?: 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
-  ): Observable<Array<GeneralMetadata>>;
+  ): Observable<Array<CommitMetadata>>;
   public getMetadataForFile(
     microserviceName: string,
     filepath: string,
     limit?: number,
     observe?: 'response',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
-  ): Observable<HttpResponse<Array<GeneralMetadata>>>;
+  ): Observable<HttpResponse<Array<CommitMetadata>>>;
   public getMetadataForFile(
     microserviceName: string,
     filepath: string,
     limit?: number,
     observe?: 'events',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
-  ): Observable<HttpEvent<Array<GeneralMetadata>>>;
+  ): Observable<HttpEvent<Array<CommitMetadata>>>;
   public getMetadataForFile(
     microserviceName: string,
     filepath: string,
     limit?: number,
     observe: any = 'body',
+    responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
     if (microserviceName === null || microserviceName === undefined) {
@@ -296,12 +314,13 @@ export class GitLabBackendService {
     // to determine the Content-Type header
     const consumes: string[] = [];
 
-    return this.httpClient.get<Array<GeneralMetadata>>(
+    return this.httpClient.get<Array<CommitMetadata>>(
       `${this.hostnameAndServiceBasePath}/${encodeURIComponent(String(microserviceName))}/metadata/${encodeURIComponent(
         String(filepath)
       )}`,
       {
         params: queryParameters,
+        responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
         headers: headers,
         observe: observe,

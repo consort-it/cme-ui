@@ -1,0 +1,8 @@
+<ng-container [ngSwitch]="(qualityPalette.context$ | async)?.category">
+  <cme-failed-builds *ngSwitchCase="Category.Builds"></cme-failed-builds>
+  <cme-open-bugs *ngSwitchCase="Category.Bugs"></cme-open-bugs>
+  <div *ngSwitchDefault>
+    This is default
+  </div>
+
+</ng-container>

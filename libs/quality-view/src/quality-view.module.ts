@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 import { MatGridListModule } from '@angular/material';
 import { I18nModule } from '@cme2/i18n';
 import { ViewContainerModule } from '@cme2/shared';
+import { ApiModule as QualityBackendModule } from '@cme2/connector-quality';
+import { ApiModule as JiraBackendModule } from '@cme2/connector-jira';
 import * as translationsDe from './i18n/de.json';
 import * as translationsEn from './i18n/en.json';
-import { QualityCardModule } from './quality-card';
-import { QualityDashboardComponent } from './quality-dashboard/quality-dashboard.component';
+import { QualityPaletteModule } from './quality-palette/quality-palette.module';
 import { QualityViewRoutingModule } from './quality-view-routing.module';
 import { QualityViewComponent } from './quality-view.component';
-import { QualityService } from './services/quality.service';
-import { ApiModule as QualityBackendModule } from '@cme2/connector-quality';
+import { QualityDashboardModule } from '@cme2/quality-view/src/quality-dashboard';
 
 // Translations must be exported to work with aot in prod build
 export const en = translationsEn;
@@ -21,12 +21,15 @@ export const de = translationsDe;
     CommonModule,
     QualityViewRoutingModule,
     MatGridListModule,
-    QualityCardModule,
+    QualityDashboardModule,
     ViewContainerModule,
     I18nModule.forChild({ en, de }),
-    QualityBackendModule.forRoot()
+    QualityPaletteModule,
+    ViewContainerModule,
+    QualityBackendModule.forRoot(),
+    JiraBackendModule.forRoot()
   ],
-  declarations: [QualityViewComponent, QualityDashboardComponent],
+  declarations: [QualityViewComponent],
   providers: []
 })
 export class QualityViewModule {}
