@@ -156,7 +156,7 @@ export class GitLabBackendService {
     let headers = this.defaultHeaders;
 
     // to determine the Accept header
-    const httpHeaderAccepts: string[] = ['text/plain'];
+    const httpHeaderAccepts: string[] = ['text/plain', 'application/json'];
     const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
     if (httpHeaderAcceptSelected !== undefined) {
       headers = headers.set('Accept', httpHeaderAcceptSelected);

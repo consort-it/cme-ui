@@ -1,14 +1,14 @@
-<cme-view-container [title]="'domain-model-view.title' | translate">
-  <div cmeViewContainerContent class="content">
-    <code><pre style="margin:0">
-      -----------------------
-      |       TODO          |
-      +---------------------+
-      |                     |
-      |                     |
-      |                     |
-      |                     |
-      -----------------------
-    </pre></code>
+<cme-view-container [title]="'domain-model-view.title' | translate" [paletteVisible]="paletteService.isOpen$ | async" (paletteVisibleChange)="onPaletteVisibleChange($event)">
+  <div cmeViewContainerContent (click)="paletteService.resetContext()" class="content" [class.content--disable-user-selection]="disableUserSelection">
+    <ng-container *ngFor="let model of domainModelService.domainModels$ | async">
+      <cme-domain-card class="model" cmeStopPropagation="click" (click)="paletteService.setContext(model)" cmeDomainModelDragAndDrop
+        (positionChanged)="savePosition($event, model)" (dragAndDropStart)="onDragAndDropStart(model)" (dragAndDropEnd)="onDragAndDropEnd(model)"
+        [selected]="(paletteService.context$ | async)?.id === model.id" [positionX]="model.positionX" [positionY]="model.positionY"
+        [zIndex]="model.zIndex" [domainModel]="model"></cme-domain-card>
+    </ng-container>
   </div>
+
+  <cme-domain-model-bread-crumbs cmeViewContainerPaletteHeader></cme-domain-model-bread-crumbs>
+
+  <cme-domain-model-palette cmeViewContainerPalette></cme-domain-model-palette>
 </cme-view-container>

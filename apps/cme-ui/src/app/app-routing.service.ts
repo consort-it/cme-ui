@@ -30,7 +30,7 @@ export class AppRoutingService implements OnDestroy {
 
   navigateToHomeView(): void {
     this.logger.info(`User authenticated, navigating to home view`);
-    this.router.navigate(['/home']);
+    this.router.navigate(['/domain-model']);
   }
 
   stopPresentationMode(): void {

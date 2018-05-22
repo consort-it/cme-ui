@@ -8,9 +8,8 @@ describe('FailedBuildsBarChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FailedBuildsBarChartComponent ]
-    })
-    .compileComponents();
+      declarations: [FailedBuildsBarChartComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

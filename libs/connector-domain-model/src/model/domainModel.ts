@@ -41,4 +41,8 @@ export interface DomainModel {
    * The vertical position of the Model object on the viewport
    */
   positionY?: number;
+  /**
+   * The z-index of the model in the viewport
+   */
+  zIndex?: number;
 }

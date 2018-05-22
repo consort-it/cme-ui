@@ -30,6 +30,8 @@ import { PresentationModeFakeService } from './shared/presentation-mode-fake-ser
 import { ShowcaseAppComponent } from './showcase-app.component';
 import { SolutionMicroserviceShowCaseComponent } from './solution-microservice-show-case/solution-microservice-show-case.component';
 import { TeamShowCaseModule } from './team-show-case/team-show-case.module';
+import { DomainCardShowCaseComponent } from './domain-card-show-case/domain-card-show-case.component';
+import { DomainCardModule } from '@cme2/domain-model-view/src/domain-card'; //tslint:disable-line
 
 @NgModule({
   imports: [
@@ -46,15 +48,17 @@ import { TeamShowCaseModule } from './team-show-case/team-show-case.module';
     MatRadioModule,
     MatIconModule,
     MatSlideToggleModule,
+    MatRadioModule,
     FormsModule,
     PaletteToolbarModule,
     TeamShowCaseModule,
     QualityShowCaseModule,
     ServiceContextModule,
+    DomainCardModule,
     I18nModule.forRoot(),
     I18nModule.forChild() // we need this to actually load the translations
   ],
-  declarations: [ShowcaseAppComponent, SolutionMicroserviceShowCaseComponent],
+  declarations: [ShowcaseAppComponent, SolutionMicroserviceShowCaseComponent, DomainCardShowCaseComponent],
   bootstrap: [ShowcaseAppComponent],
   providers: [
     { provide: PresentationModeProvider, useClass: PresentationModeFakeService },

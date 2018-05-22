@@ -1,0 +1,75 @@
+@import './../../domain-model-view';
+
+:host {
+  display: block;
+  position: relative;
+  background-color: white;
+  height: 100%;
+  padding: 30px;
+  padding-top: 0;
+}
+
+.palette-tab-group {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.color-grid {
+  display: flex;
+  height: 50px;
+  padding-top: 1rem;
+}
+
+.color {
+  flex-grow: 1;
+}
+
+.property-container {
+  width: 175px;
+}
+
+mat-expansion-panel {
+  margin-top: 1rem !important;
+
+  mat-expansion-panel-header {
+    background-color: mat-color($consort-blue, 500);
+
+    &:hover,
+    &:focus {
+      background-color: mat-color($consort-blue, 500) !important;
+    }
+  }
+
+  mat-panel-title {
+    color: white;
+  }
+}
+
+::ng-deep .mat-expansion-panel-content {
+  border: 1px solid mat-color($consort-grey, 200);
+}
+
+::ng-deep .mat-expansion-indicator:after {
+  color: white !important;
+}
+
+// Todo: Remove below workarounds, when this issue is fixed
+// https://github.com/angular/material2/issues/5269
+
+::ng-deep div.mat-expansion-panel-content:not(.mat-expanded) {
+  height: 0px;
+  visibility: hidden;
+}
+
+::ng-deep .mat-expansion-panel-header:not(.mat-expanded) {
+  height: 48px;
+}
+
+::ng-deep .mat-expansion-panel-header {
+  height: 64px;
+  &.mat-expanded {
+    .mat-expansion-indicator {
+      transform: rotate(180deg);
+    }
+  }
+}

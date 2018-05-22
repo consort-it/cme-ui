@@ -7,14 +7,19 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  Output
+  Output,
+  Inject
 } from '@angular/core';
 import { LogService } from '@cme2/logging';
 import { ViewContainerContentDirective } from '@cme2/shared/src/modules/view-container/view-container-content.directive';
 import { Subscription } from 'rxjs/Subscription';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 
 import { PresentationMode, PresentationModeProvider } from '../../interfaces';
 import { ViewContainerPaletteDirective } from './view-container-palette.directive';
+import { DOCUMENT } from '@angular/common';
+import { filter, tap, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'cme-view-container',
@@ -38,8 +43,8 @@ export class ViewContainerComponent implements OnInit, OnDestroy, AfterContentIn
     return this._paletteVisible;
   }
 
+  private _destroyer$$ = new Subject<void>();
   private _paletteVisible = false;
-  private subscription = Subscription.EMPTY;
   public paletteButtonVisible = true;
   public paletteHeaderVisible = false;
 
@@ -50,6 +55,7 @@ export class ViewContainerComponent implements OnInit, OnDestroy, AfterContentIn
   public constructor(
     private presentationModeProvider: PresentationModeProvider,
     private cdr: ChangeDetectorRef,
+    @Inject(DOCUMENT) private document: Document,
     private logger: LogService
   ) {}
 
@@ -67,13 +73,17 @@ export class ViewContainerComponent implements OnInit, OnDestroy, AfterContentIn
   }
 
   public ngOnInit() {
-    this.subscription = this.presentationModeProvider.presentationMode$.subscribe(mode => {
+    this.presentationModeProvider.presentationMode$.pipe(takeUntil(this._destroyer$$)).subscribe(mode => {
       if (mode === PresentationMode.On) {
         this.paletteVisible = false;
       }
       this.paletteButtonVisible = mode !== PresentationMode.On;
       this.cdr.detectChanges();
     });
+
+    fromEvent(this.document, 'keyup')
+      .pipe(takeUntil(this._destroyer$$), filter((key: any) => key.code === 'KeyE'))
+      .subscribe(() => this.togglePalette());
   }
 
   onPaletteClosing(event: any) {
@@ -97,7 +107,6 @@ export class ViewContainerComponent implements OnInit, OnDestroy, AfterContentIn
   }
 
   public ngOnDestroy() {
-    this.subscription.unsubscribe();
-    this.subscription = Subscription.EMPTY;
+    this._destroyer$$.next();
   }
 }

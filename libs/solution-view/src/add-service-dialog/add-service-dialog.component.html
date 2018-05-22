@@ -2,7 +2,7 @@
 
 <p class="phase-headline" *ngIf="currentPhaseName">Add a new service to phase {{currentPhaseName}}</p>
 
-<form #form="ngForm" class="dialog-form" (ngSubmit)="submit(form.value)">
+<form cmeStopPropagation="keyup" #form="ngForm" class="dialog-form" (ngSubmit)="submit(form.value)">
   <mat-form-field class="dialog-form__form-field">
     <input matInput value="" autocomplete="off" [unique]="metadataService.currentServices$ | async" [placeholder]="'add-service-dialog.placeholder' | translate"
       id="serviceName" name="serviceName" ngModel="" required #serviceName="ngModel">

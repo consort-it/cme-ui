@@ -44,34 +44,42 @@ export class DomainModelBackendService {
   /**
    * Get the model objects defined in the swagger-files of the relevant services
    *
+   * @param projectName The name of the project for which we want to store our additional properties
    * @param serviceNames The names of the services whose objects are requested
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public getModelsForServices(
+    projectName: string,
     serviceNames: Array<string>,
     observe?: 'body',
     responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<Array<DomainModel>>;
   public getModelsForServices(
+    projectName: string,
     serviceNames: Array<string>,
     observe?: 'response',
     responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpResponse<Array<DomainModel>>>;
   public getModelsForServices(
+    projectName: string,
     serviceNames: Array<string>,
     observe?: 'events',
     responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress?: boolean
   ): Observable<HttpEvent<Array<DomainModel>>>;
   public getModelsForServices(
+    projectName: string,
     serviceNames: Array<string>,
     observe: any = 'body',
     responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
+    if (projectName === null || projectName === undefined) {
+      throw new Error('Required parameter projectName was null or undefined when calling getModelsForServices.');
+    }
     if (serviceNames === null || serviceNames === undefined) {
       throw new Error('Required parameter serviceNames was null or undefined when calling getModelsForServices.');
     }
@@ -93,25 +101,30 @@ export class DomainModelBackendService {
     // to determine the Content-Type header
     const consumes: string[] = [];
 
-    return this.httpClient.get<Array<DomainModel>>(`${this.hostnameAndServiceBasePath}/services`, {
-      params: queryParameters,
-      responseType: <any>responseType,
-      withCredentials: this.configuration.withCredentials,
-      headers: headers,
-      observe: observe,
-      reportProgress: reportProgress
-    });
+    return this.httpClient.get<Array<DomainModel>>(
+      `${this.hostnameAndServiceBasePath}/models/${encodeURIComponent(String(projectName))}`,
+      {
+        params: queryParameters,
+        responseType: <any>responseType,
+        withCredentials: this.configuration.withCredentials,
+        headers: headers,
+        observe: observe,
+        reportProgress: reportProgress
+      }
+    );
   }
 
   /**
    * Saves the appreance data of the model objects (headerColor, iconName, positionX, positionY). If any of the other properties of the model are changed, this will be ignored.
    *
+   * @param projectName The name of the project for which we want to store our additional properties
    * @param serviceNames The names of the services whose objects are requested
    * @param models Model objects
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public saveModelAppearance(
+    projectName: string,
     serviceNames: Array<string>,
     models: Array<DomainModel>,
     observe?: 'body',
@@ -119,6 +132,7 @@ export class DomainModelBackendService {
     reportProgress?: boolean
   ): Observable<Array<DomainModel>>;
   public saveModelAppearance(
+    projectName: string,
     serviceNames: Array<string>,
     models: Array<DomainModel>,
     observe?: 'response',
@@ -126,6 +140,7 @@ export class DomainModelBackendService {
     reportProgress?: boolean
   ): Observable<HttpResponse<Array<DomainModel>>>;
   public saveModelAppearance(
+    projectName: string,
     serviceNames: Array<string>,
     models: Array<DomainModel>,
     observe?: 'events',
@@ -133,12 +148,16 @@ export class DomainModelBackendService {
     reportProgress?: boolean
   ): Observable<HttpEvent<Array<DomainModel>>>;
   public saveModelAppearance(
+    projectName: string,
     serviceNames: Array<string>,
     models: Array<DomainModel>,
     observe: any = 'body',
     responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
+    if (projectName === null || projectName === undefined) {
+      throw new Error('Required parameter projectName was null or undefined when calling saveModelAppearance.');
+    }
     if (serviceNames === null || serviceNames === undefined) {
       throw new Error('Required parameter serviceNames was null or undefined when calling saveModelAppearance.');
     }
@@ -167,13 +186,17 @@ export class DomainModelBackendService {
       headers = headers.set('Content-Type', httpContentTypeSelected);
     }
 
-    return this.httpClient.put<Array<DomainModel>>(`${this.hostnameAndServiceBasePath}/services`, models, {
-      params: queryParameters,
-      responseType: <any>responseType,
-      withCredentials: this.configuration.withCredentials,
-      headers: headers,
-      observe: observe,
-      reportProgress: reportProgress
-    });
+    return this.httpClient.put<Array<DomainModel>>(
+      `${this.hostnameAndServiceBasePath}/models/${encodeURIComponent(String(projectName))}`,
+      models,
+      {
+        params: queryParameters,
+        responseType: <any>responseType,
+        withCredentials: this.configuration.withCredentials,
+        headers: headers,
+        observe: observe,
+        reportProgress: reportProgress
+      }
+    );
   }
 }

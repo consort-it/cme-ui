@@ -10,7 +10,7 @@ import {
   MatToolbarModule,
   MatSelectModule
 } from '@angular/material';
-import { UniqueValidatorModule, DialogToolbarModule } from '@cme2/shared';
+import { UniqueValidatorModule, DialogToolbarModule, EventsModule } from '@cme2/shared';
 import { I18nModule } from '@cme2/i18n';
 import { CustomFormsModule } from 'ng4-validators';
 
@@ -30,7 +30,8 @@ import { CustomFormsModule } from 'ng4-validators';
     I18nModule.forChild({
       en: require('./../i18n/en.json'),
       de: require('./../i18n/de.json')
-    })
+    }),
+    EventsModule
   ],
   declarations: [AddServiceDialogComponent],
   entryComponents: [AddServiceDialogComponent]

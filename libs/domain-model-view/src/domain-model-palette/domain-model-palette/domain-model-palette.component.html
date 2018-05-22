@@ -1,0 +1,35 @@
+<mat-tab-group disableRipple="true" class="palette-tab-group">
+  <mat-tab *ngIf="(paletteService.context$ | async) as model" [label]="(paletteService.context$ | async)?.name">
+    <mat-accordion>
+
+      <mat-expansion-panel class="mat-elevation-z0" expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{'domain-model-view.palette.Model Properties' | translate}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <div class="property-container">
+            <cme-model-property *ngFor="let property of model.properties" [property]="property"></cme-model-property>
+          </div>
+        </ng-template>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="mat-elevation-z0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{'domain-model-view.palette.Header Color' | translate}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <div class="color-grid">
+            <div class="color" [style.backgroundColor]="color" (click)="setColor(color)" *ngFor="let color of domainModelService.colors"></div>
+          </div>
+        </ng-template>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+  </mat-tab>
+  <mat-tab [label]="'Layout'">
+
+    <p>{{'domain-model-view.palette.reset-layout-text' | translate}}</p>
+    <button color="primary" (click)="resetLayout()" mat-raised-button>{{'domain-model-view.palette.reset-layout' | translate}}</button>
+
+  </mat-tab>
+</mat-tab-group>

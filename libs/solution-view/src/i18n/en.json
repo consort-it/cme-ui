@@ -17,8 +17,7 @@
   "palette": {
     "feature-toggles": {
       "Loading Error": "Error while loading data",
-      "No Feature toggles":
-        "No feature toggles found. To make them available, add a feature-toggles.yaml file to project root.",
+      "No Feature toggles": "No feature toggles found. To make them available, add a feature-toggles.yaml file to project root.",
       "Retrieving": "Retrieving..."
     },
     "last-commits": {

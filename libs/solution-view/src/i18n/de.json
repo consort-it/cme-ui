@@ -17,8 +17,7 @@
   "palette": {
     "feature-toggles": {
       "Loading Error": "Fehler beim Laden der Daten",
-      "No Feature toggles":
-        "Keine Feature Toggles vorhanden. Füge dem Rootverzeichnis des Projekts eine feature-toggles.yaml Datei hinzu um sie verfügbar zu machen.",
+      "No Feature toggles": "Keine Feature Toggles vorhanden. Füge dem Rootverzeichnis des Projekts eine feature-toggles.yaml Datei hinzu um sie verfügbar zu machen.",
       "Retrieving": "Lädt..."
     },
     "last-commits": {

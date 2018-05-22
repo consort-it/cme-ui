@@ -1,0 +1,45 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+
+.card__property {
+  margin: 0;
+  font-size: 0.65rem;
+  color: mat-color($consort-blue, 500);
+}
+
+p.card__property--type {
+  color: mat-color($consort-grey, 400);
+  margin-top: -1px;
+}
+
+
+.card__property-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 5px 8px 5px;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+}
+
+
+
+.mat-divider {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+.card__property-additional {
+  display: inherit;
+  align-items: center;
+}
+
+.card__property-status {
+  font-size: 1rem;
+  width: 0.9rem;
+  color: mat-color($consort-grey, 300);
+  vertical-align: middle;
+  margin-left: 0.2em;
+}
+
+.card__property-status--true {
+  color: mat-color($consort-blue, 500);
+}
+

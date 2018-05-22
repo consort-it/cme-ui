@@ -121,12 +121,48 @@ describe('ViewContainerComponent', () => {
       const sut = new ViewContainerComponent(
         instance(presentationModeProviderMock),
         new ChangeDetectorRefDouble(),
+        document,
         instance(mock(LogService))
       );
       sut.ngOnInit();
       sut.paletteVisible = true;
 
       presentationMode$$.next(PresentationMode.On);
+      expect(sut.paletteVisible).toBeFalsy();
+    });
+
+    it('should be set to true when key e is pressed', () => {
+      const sut = new ViewContainerComponent(
+        instance(presentationModeProviderMock),
+        new ChangeDetectorRefDouble(),
+        document,
+        instance(mock(LogService))
+      );
+      sut.ngOnInit();
+      sut.paletteVisible = false;
+
+      const event = new KeyboardEvent('keyup', {
+        code: 'KeyE'
+      });
+      document.dispatchEvent(event);
+      expect(sut.paletteVisible).toBeTruthy();
+    });
+
+    it('should be set to false when key e is pressed twice', () => {
+      const sut = new ViewContainerComponent(
+        instance(presentationModeProviderMock),
+        new ChangeDetectorRefDouble(),
+        document,
+        instance(mock(LogService))
+      );
+      sut.ngOnInit();
+      sut.paletteVisible = false;
+
+      const event = new KeyboardEvent('keyup', {
+        code: 'KeyE'
+      });
+      document.dispatchEvent(event);
+      document.dispatchEvent(event);
       expect(sut.paletteVisible).toBeFalsy();
     });
   });

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MetaDataService, MetadataProject } from '@cme2/core-services';
+import { MetaDataService, MetadataProject, NotificationService, NotificationType } from '@cme2/core-services';
+import { of } from 'rxjs/observable/of';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { takeUntil, map, first, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'cme-context-tab',
@@ -7,24 +11,40 @@ import { MetaDataService, MetadataProject } from '@cme2/core-services';
   styleUrls: ['./context-tab.component.scss']
 })
 export class ContextTabComponent implements OnInit {
-  diagram = '';
-  project: MetadataProject | undefined;
+  private _destroyer$$ = new Subject<void>();
 
-  constructor(private meta: MetaDataService) {
-    this.meta.currentProject$.subscribe(project => {
-      if (project.context) {
-        this.project = Object.assign({}, project);
-        this.diagram = project.context;
-      }
-    });
+  diagram$: Observable<string> = of('');
+
+  constructor(private meta: MetaDataService, private notificationService: NotificationService) {}
+
+  ngOnInit() {
+    this.diagram$ = this.meta.currentProject$.pipe(
+      takeUntil(this._destroyer$$),
+      map(x => (x.context ? x.context : ''))
+    );
   }
 
-  ngOnInit() {}
-
   save(value: any) {
-    if (this.project) {
-      this.project.context = this.diagram;
-      this.meta.updateProject(this.project.id, this.project).subscribe(() => {});
+    if (value.diagram !== undefined) {
+      this.meta.currentProject$
+        .pipe(
+          takeUntil(this._destroyer$$),
+          first(),
+          switchMap(project => {
+            project.context = value.diagram;
+            return this.meta.updateProject(project.id, project);
+          })
+        )
+        .subscribe(
+          () => void 0,
+          err => {
+            this.notificationService.addNotification(
+              'Error saving context diagram',
+              'Could not save context diagram. Reason: ' + err.toString(),
+              NotificationType.Alert
+            );
+          }
+        );
     }
   }
 }

@@ -1,0 +1,14 @@
+<div *ngIf="property" class="card__property-list">
+  <div class="card__property-item">
+    <div>
+      <p class="card__property">{{ property?.name}}</p>
+      <p class="card__property card__property--type">{{ property?.type}}</p>
+    </div>
+    <div class="card__property-additional">
+      <mat-icon svgIcon="array" [ngClass]="{'card__property-status--true': property?.isArray}" class="card__property-status" matTooltip="isArray"
+        matTooltipPosition="above"></mat-icon>
+      <mat-icon svgIcon="required" [ngClass]="{'card__property-status--true': property?.isRequired}" class="card__property-status"
+        matTooltip="isRequired" matTooltipPosition="above"></mat-icon>
+    </div>
+  </div>
+</div>

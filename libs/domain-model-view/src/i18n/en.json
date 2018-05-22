@@ -1,5 +1,12 @@
 {
   "domain-model-view": {
+    "palette": {
+      "Header Color": "Header Color",
+      "Model Properties": "Model Properties",
+      "reset-layout": "Reset Layout",
+      "reset-layout-text":
+        "If you somehow messed up the layout of the domain models, here's the place where you can fix it."
+    },
     "title": "Domain Model"
   }
 }

@@ -1,0 +1,81 @@
+@import '~@angular/material/theming';
+@import './libs/shared/src/styles/consort-theme';
+
+p {
+  margin: 0;
+  font-size: 0.65em;
+  color: mat-color($consort-blue, 500);
+}
+
+p.card__model-name {
+  font-size: 0.85em;
+  font-weight: 700;
+}
+
+p.card__service-name {
+  margin: -3px 0 17px 0;
+  color: mat-color($consort-grey, 400);
+}
+
+p.card__property-type {
+  color: mat-color($consort-grey, 400);
+  margin-top: -1px;
+}
+
+.card {
+  width: 260px;
+  height: 290px;
+  padding: 0;
+  display: flex;
+}
+
+.card:hover {
+  @include mat-elevation(7);
+}
+
+.card--selected {
+  border: 1px solid mat-color($consort-blue, 500);
+}
+
+.card__header {
+  width: 28px;
+  height: 100%;
+}
+
+.card__content {
+  flex: auto;
+  padding: 16px 40px 24px 15px;
+}
+
+.card__icon-section {
+  border-top-left-radius: 2px;
+  // height: 100%;
+  height: 67px;
+  width: 100%;
+  padding-top: 14px;
+  text-align: center;
+}
+
+.card__icon {
+  color: white;
+  font-size: 0.75em;
+  height: 1em;
+  width: 1em;
+}
+
+.card__property-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 5px 8px 5px;
+}
+
+.mat-divider {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+.card__more {
+  color: mat-color($consort-grey, 300);
+  width: 100%;
+  text-align: center;
+  font-size: 1.05em;
+}

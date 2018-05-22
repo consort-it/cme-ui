@@ -1,0 +1,19 @@
+<mat-card [ngClass]="{'card--selected': selected}" class="card">
+
+  <div class="card__header">
+    <div class="card__icon-section" [style.backgroundColor]="domainModel?.headerColor" style="cursor: move">
+      <mat-icon class="card__icon">{{domainModel.iconName}}</mat-icon>
+    </div>
+  </div>
+
+  <div class="card__content">
+    <div class="card__name">
+      <p class="card__model-name">{{domainModel.name}}</p>
+      <p class="card__service-name">{{domainModel.serviceName}}</p>
+    </div>
+    <mat-divider [inset]="true"></mat-divider>
+    <cme-model-property [property]="property" *ngFor="let property of domainModel.properties.slice(0, 4)"></cme-model-property>
+    <mat-icon *ngIf="domainModel.properties.length > 4" class="card__more">more_horiz</mat-icon>
+  </div>
+
+</mat-card>

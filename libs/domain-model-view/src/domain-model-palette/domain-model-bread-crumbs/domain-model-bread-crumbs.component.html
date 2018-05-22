@@ -1,0 +1,5 @@
+<ng-container *ngIf="(paletteService.context$ | async) as model">
+    {{ model.serviceName }}
+    <span class="arrow">></span>
+    {{ model.name }}
+</ng-container>

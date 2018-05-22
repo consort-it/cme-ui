@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Environment, FeatureToggleBackendService } from '@cme2/connector-feature-toggle-service';
-import { ClusterManagerService } from '@cme2/core-services';
+import { ClusterManagerService, NotificationService, NotificationType } from '@cme2/core-services';
 import { LogService } from '@cme2/logging';
 import { Observable } from 'rxjs/Observable';
 import { combineLatest } from 'rxjs/observable/combineLatest';
@@ -30,7 +30,8 @@ export class FeatureToggleService {
     private featureToggleBackend: FeatureToggleBackendService,
     paletteService: SolutionPaletteService,
     clusterManagementService: ClusterManagerService,
-    private logger: LogService
+    private logger: LogService,
+    private notificationService: NotificationService
   ) {
     this.featureToggles$ = combineLatest(
       clusterManagementService.currentConnection$,
@@ -70,7 +71,7 @@ export class FeatureToggleService {
               featureToggles
             )
           ),
-          catchError((e: HttpErrorResponse) => this.handleError(e))
+          catchError((e: HttpErrorResponse) => this.handleGetError(e))
         );
       })
     );
@@ -78,16 +79,19 @@ export class FeatureToggleService {
     this.fetching$ = this.featureToggles$.pipe(map(() => false), startWith(true));
   }
 
-  private handleError(e: HttpErrorResponse) {
+  private handleGetError(e: HttpErrorResponse) {
     this.logger.error(`[FeatureToggleService] Error while retrieving toggles: `, e);
-    let message = '';
-    if (e.error && e.error.message) {
-      message = e.error.message;
-    } else {
-      message = JSON.stringify(e.error);
-    }
+    const message = this.getErrorMessage(e);
     this.error$$.next(message);
     return of([]);
+  }
+
+  private getErrorMessage(e: HttpErrorResponse) {
+    if (e.error && e.error.message) {
+      return e.error.message;
+    } else {
+      return JSON.stringify(e.error);
+    }
   }
 
   public setFeatureToggle(serviceName: string, environment: string, toggleName: string, newValue: boolean) {
@@ -96,6 +100,19 @@ export class FeatureToggleService {
       `[FeatureToggleService] changing feature toggle '${toggleName}' of '${serviceName}' in env '${environment}' to new value: `,
       newValue
     );
-    this.featureToggleBackend.setFeatureToggle(serviceName, environment, toggleName, newValue).subscribe();
+    this.featureToggleBackend.setFeatureToggle(serviceName, environment, toggleName, newValue).subscribe(
+      () => {},
+      (error: HttpErrorResponse) => {
+        const httpErrorMessage = this.getErrorMessage(error);
+        this.logger.error(
+          `Error while changing feature toggle '${toggleName}' of '${serviceName}' in env '${environment}' to new value: ${newValue}. Backend response was: "${httpErrorMessage}"`
+        );
+        this.notificationService.addNotification(
+          'FeatureToggleService ERROR',
+          `Could not change feature toggle "${toggleName}". Backend responded: "${httpErrorMessage}"`,
+          NotificationType.Alert
+        );
+      }
+    );
   }
 }
