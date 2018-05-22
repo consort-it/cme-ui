@@ -44,7 +44,7 @@ export class FeatureToggleBackendService {
   /**
    * Get the environments with feature toggles for the given microservice.
    *
-   * @param serviceName the microservice name (simple format, without &#39;-vX&#39; suffix
+   * @param serviceName the microservice name (simple format, without &#39;-vX&#39; suffix)
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
@@ -89,7 +89,7 @@ export class FeatureToggleBackendService {
     const consumes: string[] = [];
 
     return this.httpClient.get<Array<Environment>>(
-      `${this.hostnameAndServiceBasePath}/${encodeURIComponent(String(serviceName))}`,
+      `${this.hostnameAndServiceBasePath}/stages/all/services/${encodeURIComponent(String(serviceName))}`,
       {
         responseType: <any>responseType,
         withCredentials: this.configuration.withCredentials,
@@ -103,16 +103,16 @@ export class FeatureToggleBackendService {
   /**
    * Sets a new value for a feature toggle in a specific environment.
    *
-   * @param serviceName the microservice name (simple format, without &#39;-vX&#39; suffix
-   * @param envName the environment name for which to change the feature toggle
-   * @param toggleName the feature toggle name whose value should be changed
-   * @param value the new value of the feature toggle.
+   * @param envName the name of the stage in whicht the microservice resides where the feature should be toggled
+   * @param serviceName the name of the microservice including the part with the version number
+   * @param toggleName the name of the feature to be toggled
+   * @param value value the feature toggle should be set to
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public setFeatureToggle(
-    serviceName: string,
     envName: string,
+    serviceName: string,
     toggleName: string,
     value: boolean,
     observe?: 'body',
@@ -120,8 +120,8 @@ export class FeatureToggleBackendService {
     reportProgress?: boolean
   ): Observable<Array<Environment>>;
   public setFeatureToggle(
-    serviceName: string,
     envName: string,
+    serviceName: string,
     toggleName: string,
     value: boolean,
     observe?: 'response',
@@ -129,8 +129,8 @@ export class FeatureToggleBackendService {
     reportProgress?: boolean
   ): Observable<HttpResponse<Array<Environment>>>;
   public setFeatureToggle(
-    serviceName: string,
     envName: string,
+    serviceName: string,
     toggleName: string,
     value: boolean,
     observe?: 'events',
@@ -138,19 +138,19 @@ export class FeatureToggleBackendService {
     reportProgress?: boolean
   ): Observable<HttpEvent<Array<Environment>>>;
   public setFeatureToggle(
-    serviceName: string,
     envName: string,
+    serviceName: string,
     toggleName: string,
     value: boolean,
     observe: any = 'body',
     responseType?: 'text' | 'json' | 'arraybuffer' | 'blob',
     reportProgress: boolean = false
   ): Observable<any> {
-    if (serviceName === null || serviceName === undefined) {
-      throw new Error('Required parameter serviceName was null or undefined when calling setFeatureToggle.');
-    }
     if (envName === null || envName === undefined) {
       throw new Error('Required parameter envName was null or undefined when calling setFeatureToggle.');
+    }
+    if (serviceName === null || serviceName === undefined) {
+      throw new Error('Required parameter serviceName was null or undefined when calling setFeatureToggle.');
     }
     if (toggleName === null || toggleName === undefined) {
       throw new Error('Required parameter toggleName was null or undefined when calling setFeatureToggle.');
@@ -176,9 +176,9 @@ export class FeatureToggleBackendService {
     }
 
     return this.httpClient.put<Array<Environment>>(
-      `${this.hostnameAndServiceBasePath}/${encodeURIComponent(String(serviceName))}/${encodeURIComponent(
-        String(envName)
-      )}/${encodeURIComponent(String(toggleName))}`,
+      `${this.hostnameAndServiceBasePath}/stages/${encodeURIComponent(String(envName))}/services/${encodeURIComponent(
+        String(serviceName)
+      )}/features/${encodeURIComponent(String(toggleName))}`,
       value,
       {
         responseType: <any>responseType,

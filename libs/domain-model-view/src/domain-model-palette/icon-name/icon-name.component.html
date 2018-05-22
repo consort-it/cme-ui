@@ -1,0 +1,10 @@
+<mat-form-field class="form-field">
+  <input cmeStopPropagation="keyup" (blur)="iconNameControl.valid ? onBlur(iconNameControl.value) : onBlur(undefined)" placeholder="Icon name"
+    type="text" matInput [formControl]="iconNameControl" [matAutocomplete]="auto">
+</mat-form-field>
+
+<mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+  <mat-option *ngFor="let name of filteredIconNames | async " [value]="name ">
+    <mat-icon>{{name}}</mat-icon>{{ name }}
+  </mat-option>
+</mat-autocomplete>

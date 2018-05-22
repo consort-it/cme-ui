@@ -2,6 +2,7 @@
   "domain-model-view": {
     "palette": {
       "Header Color": "Header Color",
+      "Icon Name": "Icon Name",
       "Model Properties": "Model Properties",
       "reset-layout": "Reset Layout",
       "reset-layout-text":

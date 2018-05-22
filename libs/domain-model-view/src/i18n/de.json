@@ -2,6 +2,7 @@
   "domain-model-view": {
     "palette": {
       "Header Color": "Header Farbe",
+      "Icon Name": "Icon Name",
       "Model Properties": "Model Eigenschaften",
       "reset-layout": "Layout zurücksetzen",
       "reset-layout-text": "Falls Sie das Layout der Domain Models mal verhauen haben, können Sie es hier zurücksetzen."

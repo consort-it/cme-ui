@@ -19,8 +19,17 @@
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
           <div class="color-grid">
-            <div class="color" [style.backgroundColor]="color" (click)="setColor(color)" *ngFor="let color of domainModelService.colors"></div>
+            <div class="color" [style.backgroundColor]="color" (click)="onSelectColor(color)" *ngFor="let color of domainModelService.colors"></div>
           </div>
+        </ng-template>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="mat-elevation-z0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{'domain-model-view.palette.Icon Name' | translate}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <cme-icon-name [currentIconName]="model.iconName" (selectIconName)="onSelectIconName($event)"></cme-icon-name>
         </ng-template>
       </mat-expansion-panel>
 

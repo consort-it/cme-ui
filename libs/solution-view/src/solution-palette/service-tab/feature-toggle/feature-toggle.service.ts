@@ -18,6 +18,7 @@ import { Subject } from 'rxjs/Subject';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { retryWhen } from 'rxjs/operators/retryWhen';
+import { filter } from 'rxjs/operators';
 
 @Injectable()
 export class FeatureToggleService {
@@ -47,27 +48,26 @@ export class FeatureToggleService {
           this.error$$.next(undefined);
           return of([]);
         }
-        const normalizedSelection = normalizeServiceName(selection);
-        return featureToggleBackend.getFeatureToggles(normalizedSelection).pipe(
+        return <Observable<FeatureToggle[]>>featureToggleBackend.getFeatureToggles(selection).pipe(
           map(
             featureToggleEnvironments =>
               featureToggleEnvironments.find(e => e.name === connection.environment) ||
-              ({ name: '', toggles: [] } as Environment)
+              ({ name: '', services: [] } as Environment)
           ),
-          map(featureToggleEnvironment =>
-            featureToggleEnvironment.toggles.map(toggle => ({
+          map(featureToggleEnvironment => featureToggleEnvironment.services.find(s => s.name === selection)),
+          filter(x => !!x),
+          map(service =>
+            service!.toggles.map(toggle => ({
               toggleName: toggle.name,
               toggleValue: toggle.value,
               featureDescription: toggle.description,
-              serviceName: normalizedSelection,
+              serviceName: selection,
               environment: connection.environment
             }))
           ),
           tap(featureToggles =>
             logger.debug(
-              `[FeatureToggleService] feature toggles for service '${normalizedSelection}', env '${
-                connection.environment
-              }':`,
+              `[FeatureToggleService] feature toggles for service '${selection}', env '${connection.environment}':`,
               featureToggles
             )
           ),

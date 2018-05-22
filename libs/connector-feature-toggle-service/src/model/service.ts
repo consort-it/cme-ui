@@ -9,12 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { Service } from './service';
+import { FeatureToggle } from './featureToggle';
 
-export interface Environment {
+export interface Service {
   /**
-   * The name of the environment (e.g. dev, test, prod)
+   * The name of the microservice
    */
   name: string;
-  services: Array<Service>;
+  toggles: Array<FeatureToggle>;
 }
